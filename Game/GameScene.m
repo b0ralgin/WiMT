@@ -111,7 +111,9 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     
     GameObject *ceiling = [GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(width, 100)];
     ceiling.physicsBody.dynamic = NO;
-    ceiling.position = CGPointMake(width/2, self.size.height + 0.5*floor.size.height);
+    ceiling.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ceiling.size];
+    ceiling.physicsBody.allowsRotation = NO;
+    ceiling.position = CGPointMake(width/2, self.size.height + 0.5*ceiling.size.height);
     ceiling.physicsBody.categoryBitMask = kColisionRoom;
     ceiling.physicsBody.collisionBitMask = kColisionRoom;
     ceiling.physicsBody.contactTestBitMask = kContactRoom;
@@ -119,6 +121,8 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     
     GameObject *leftWall = [GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(100, self.size.height)];
     leftWall.physicsBody.dynamic = NO;
+    leftWall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:leftWall.size];
+    leftWall.physicsBody.allowsRotation = NO;
     leftWall.position = CGPointMake(-0.5*leftWall.size.width, self.size.height/2);
     leftWall.physicsBody.categoryBitMask = kColisionRoom;
     leftWall.physicsBody.collisionBitMask = kColisionRoom;
@@ -127,6 +131,8 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     
     GameObject *rightWall = [GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(100, self.size.height)];
     rightWall.physicsBody.dynamic = NO;
+    rightWall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rightWall.size];
+    rightWall.physicsBody.allowsRotation = NO;
     rightWall.position = CGPointMake(width + 0.5*rightWall.size.width, self.size.height/2);
     rightWall.physicsBody.categoryBitMask = kColisionRoom;
     rightWall.physicsBody.collisionBitMask = kColisionRoom;
