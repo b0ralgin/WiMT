@@ -21,12 +21,6 @@
 - (void)startLightAnimation:(NSString*)animationName;
 - (void)setFall;
 - (void)setGround;
-- (CGRect)getRectOnNode:(SKNode*)node;
-
-@property (assign, nonatomic) uint32_t contactBitMask;
-@property (assign, nonatomic) uint32_t collisionBitMask;
-@property (assign, nonatomic) uint32_t categoryBitMask;
-@property (assign, nonatomic) BOOL dynamic;
-@property (assign, nonatomic) CGVector velocity;
+- (void)update:(NSTimeInterval)dt;
 
 @end

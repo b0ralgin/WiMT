@@ -27,6 +27,6 @@ static const uint32_t kContactCandy=0b01111;
 static const uint32_t kContactTrap = 0b10011;
 static const uint32_t kContactEnemy = 0b10001;
 static const uint32_t kContactGirl = 0b01111;
-static const uint32_t kContactRoom = 0b10000;
+static const uint32_t kContactRoom = 0b10001;
 
 #endif
