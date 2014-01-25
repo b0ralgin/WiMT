@@ -15,21 +15,21 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
 
 @implementation GameScene {
     Girl* _girl;
-
+    
     BOOL _isLightOn;
-
+    
     float lastTime;
     
     int _health;
     NSMutableArray *_heartList;
 }
 
--(instancetype)initWithSize:(CGSize)size
+- (instancetype)initWithSize:(CGSize)size
 {
-    if (( self = [super initWithSize:size] )){
-        [[SimplePhysic sharedPhysic] setRootNode:self];
+    if (( self = [super initWithSize:size] )) {
         lastTime = 0;
-        self.physicsWorld.gravity = CGVectorMake(0, -5);
+        self.physicsWorld.gravity = CGVectorMake(0, -4);
+        self.physicsWorld.contactDelegate = self;
         
         darkSideNode = [SKCropNode new];
         darkSideNode.zPosition = 100;
@@ -38,8 +38,6 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         [self loadLevel];
         [self initGirl];
         [self initHealth];
-      
-        [[SimplePhysic sharedPhysic] refreshNodeList];
     }
     return self;
 }
@@ -48,7 +46,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     
 }
 
--(void)damage:(int)damage{
+- (void)damage:(int)damage {
     
     for(int i = _heartList.count-1; i>=0; i--)
     {
@@ -63,13 +61,12 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     if(damage > 0){
         //DEFEAT
     }
-        
+    
 }
 
 -(void)initHealth{
     _health = 6;
     _heartList = [NSMutableArray new];
-
     
     for(uint i=0; i<3; i++){
         Heart *heart = [Heart node];
@@ -77,10 +74,11 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         [_heartList addObject:heart];
         heart.position = CGPointMake((i+1)*70, 680);
     }
+    
     [self damage:3];
 }
 
--(void)initGirl
+- (void)initGirl
 {
     _girl = [[Girl alloc] init];
     _girl.position = CGPointMake(100, 400);
@@ -89,48 +87,56 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     [_girl setParent:darkSideNode];
 }
 
--(void) initBox {
+- (void)initBox {
     GameObject* box = [[GameObject alloc] initWithImageNamed:@"left_button.png"];
     box.position = CGPointMake(800, 40);
     box.size = CGSizeMake(50, 50);
-    box.dynamic = NO;
-    box.contactBitMask = kContactRoom;
-    box.categoryBitMask = kColisionRoom;
-    box.collisionBitMask = kColisionRoom;
+    box.physicsBody.dynamic = NO;
+    box.physicsBody.contactTestBitMask = kContactRoom;
+    box.physicsBody.categoryBitMask = kColisionRoom;
+    box.physicsBody.collisionBitMask = kColisionRoom;
     [self addChild:box];
 }
 
--(void)initRoomBound:(float)width {
-    GameObject *floor = [GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(width, 100)];
-    floor.dynamic = NO;
-    floor.position = CGPointMake(width/2, -0.5*floor.size.height);
-    floor.categoryBitMask = kColisionRoom;
-    floor.collisionBitMask = kColisionRoom;
-    floor.contactBitMask = kContactRoom;
+- (void)initRoomBound:(float)width {
+    SKSpriteNode *floor = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:0] size:CGSizeMake(width, 100)];
     [self addChild:floor];
+    floor.position = CGPointMake(width/2, 108-0.5*floor.size.height);
+    floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:floor.size];
+    floor.physicsBody.allowsRotation = NO;
+    floor.physicsBody.dynamic = NO;
+    floor.physicsBody.categoryBitMask = kColisionRoom;
+    floor.physicsBody.collisionBitMask = kColisionRoom;
+    floor.physicsBody.contactTestBitMask = kContactRoom;
     
     GameObject *ceiling = [GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(width, 100)];
-    ceiling.dynamic = NO;
-    ceiling.position = CGPointMake(width/2, self.size.height + 0.5*floor.size.height);
-    ceiling.categoryBitMask = kColisionRoom;
-    ceiling.collisionBitMask = kColisionRoom;
-    ceiling.contactBitMask = kContactRoom;
+    ceiling.physicsBody.dynamic = NO;
+    ceiling.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ceiling.size];
+    ceiling.physicsBody.allowsRotation = NO;
+    ceiling.position = CGPointMake(width/2, self.size.height + 0.5*ceiling.size.height);
+    ceiling.physicsBody.categoryBitMask = kColisionRoom;
+    ceiling.physicsBody.collisionBitMask = kColisionRoom;
+    ceiling.physicsBody.contactTestBitMask = kContactRoom;
     [self addChild:ceiling];
     
     GameObject *leftWall = [GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(100, self.size.height)];
-    leftWall.dynamic = NO;
+    leftWall.physicsBody.dynamic = NO;
+    leftWall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:leftWall.size];
+    leftWall.physicsBody.allowsRotation = NO;
     leftWall.position = CGPointMake(-0.5*leftWall.size.width, self.size.height/2);
-    leftWall.categoryBitMask = kColisionRoom;
-    leftWall.collisionBitMask = kColisionRoom;
-    leftWall.contactBitMask = kContactRoom;
+    leftWall.physicsBody.categoryBitMask = kColisionRoom;
+    leftWall.physicsBody.collisionBitMask = kColisionRoom;
+    leftWall.physicsBody.contactTestBitMask = kContactRoom;
     [self addChild:leftWall];
     
     GameObject *rightWall = [GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(100, self.size.height)];
-    rightWall.dynamic = NO;
+    rightWall.physicsBody.dynamic = NO;
+    rightWall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rightWall.size];
+    rightWall.physicsBody.allowsRotation = NO;
     rightWall.position = CGPointMake(width + 0.5*rightWall.size.width, self.size.height/2);
-    rightWall.categoryBitMask = kColisionRoom;
-    rightWall.collisionBitMask = kColisionRoom;
-    rightWall.contactBitMask = kContactRoom;
+    rightWall.physicsBody.categoryBitMask = kColisionRoom;
+    rightWall.physicsBody.collisionBitMask = kColisionRoom;
+    rightWall.physicsBody.contactTestBitMask = kContactRoom;
     [self addChild:rightWall];
 }
 
@@ -166,7 +172,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     /* Called when a touch begins */
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-            [_girl stopMoving];
+        [_girl stopMoving];
     }
 }
 
@@ -183,31 +189,52 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     float dt = (lastTime == 0)?0: currentTime - lastTime;
     lastTime =  currentTime;
     
-    [_girl update:dt];
-    [[SimplePhysic sharedPhysic] update:dt];
+    [self updateNodeChildrens:self WithTime:dt];
     
     /* Called before each frame is rendered */
 }
 
--(void)contact:(GameObject *)gameObjectA gameObjectB:(GameObject *)gameObjectB{
-    
+- (void)updateNodeChildrens:(SKNode*)node WithTime:(NSTimeInterval)dt {
+    NSArray* childrenList = node.children;
+    for (id child in childrenList) {
+        if ([child scene] == nil) {
+            continue;
+        }
+        
+        if ([child respondsToSelector:@selector(update:)]) {
+            [child update:dt];
+        }
+        
+        [self updateNodeChildrens:child WithTime:dt];
+    }
 }
 
-
 - (void)didBeginContact:(SKPhysicsContact *)contact {
-    NSLog(@"%d",(contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask));
-    if ((contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask)== 0b00001) {
+    id nodeA = contact.bodyA.node;
+    id nodeB = contact.bodyB.node;
+    
+    if ([nodeA position].y > [nodeB position].y) {
+        nodeA = contact.bodyB.node;
+        nodeB = contact.bodyA.node;
+    }
+    
+    if ([nodeB physicsBody].velocity.dy == 0 && [nodeB respondsToSelector:@selector(setGround)]) {
+        [nodeB setGround];
+    }
+    
+    //NSLog(@"%d",(contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask));
+    if ((contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask) == 0b00001) {
         NSLog(@"damage");
     }
     
     Enemy* node;
-    if ((contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask) ==0b10001) {
+    if ((contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask) == 0b10001) {
         if (contact.bodyA.contactTestBitMask == 17) {
             node = (Enemy*)contact.bodyA.node;
         } else {
             node = (Enemy*)contact.bodyB.node;
         }
-    [node move];
+        //[node move];
     }
 }
 

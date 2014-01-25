@@ -13,7 +13,6 @@ static NSTimeInterval const animationDelay = 0.05;
 @implementation GameObject
 {
     NSMutableDictionary* animationDictionary;
-    CGRect bodyRect;
 }
 
 - (instancetype)initWithImageNamed:(NSString *)name {
@@ -23,8 +22,9 @@ static NSTimeInterval const animationDelay = 0.05;
         lightCopy = [SKSpriteNode spriteNodeWithImageNamed:name];
         animationDictionary = [NSMutableDictionary new];
         
-        self.velocity = CGVectorMake(0, 0);
-        bodyRect = CGRectNull;
+        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+        self.physicsBody.allowsRotation = NO;
+        self.physicsBody.friction = 1.0;
     }
     
     return self;
@@ -36,6 +36,10 @@ static NSTimeInterval const animationDelay = 0.05;
     if (self != nil) {
         lightCopy = [SKSpriteNode spriteNodeWithTexture:texture];
         animationDictionary = [NSMutableDictionary new];
+        
+        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+        self.physicsBody.allowsRotation = NO;
+        self.physicsBody.friction = 1.0;
     }
     
     return self;
@@ -87,8 +91,19 @@ static NSTimeInterval const animationDelay = 0.05;
     [super setPosition:position];
 }
 
+- (void)update:(NSTimeInterval)dt {
+    lightCopy.position = self.position;
+}
+
 - (void)setCustomBodyRect:(CGRect)rect {
-    bodyRect = rect;
+    rect.origin.x -= 0.5*rect.size.width;
+    rect.origin.y -= 0.5*rect.size.height;
+    
+    CGMutablePathRef rectPath = CGPathCreateMutable();
+    CGPathAddRect(rectPath, nil, rect);
+    self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:rectPath];
+    self.physicsBody.allowsRotation = NO;
+    self.physicsBody.friction = 1.0;
 }
 
 - (void)setFall {
@@ -97,30 +112,6 @@ static NSTimeInterval const animationDelay = 0.05;
 
 - (void)setGround {
     
-}
-
-- (CGRect)getRectOnNode:(SKNode *)node {
-    float prevScale = self.xScale;
-    self.xScale = 1;
-    
-    CGRect result;
-    
-    result.origin = [self convertPoint:self.position toNode:node];
-    result.size = self.size;
-    result.origin.x = result.origin.x / 2 - 0.5*result.size.width;
-    result.origin.y = result.origin.y / 2 - 0.5*result.size.height;
-    
-    self.xScale = prevScale;
-    
-    if (CGRectIsEmpty(bodyRect)) {
-        return result;
-    }
-    
-    result.size = bodyRect.size;
-    result.origin.x += bodyRect.origin.x;
-    result.origin.y += bodyRect.origin.y;
-    
-    return result;
 }
 
 @end

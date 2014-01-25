@@ -23,7 +23,7 @@ const int kAnimationFrames = 6;
 }
 
 -(void) loadTextures:(NSString*) name array:(NSMutableArray*) arrayOfTextures {
-       NSMutableArray* frames = [NSMutableArray array];
+    NSMutableArray* frames = [NSMutableArray array];
     SKTextureAtlas* enemyAnimatedAtlas = [SKTextureAtlas atlasNamed:[[NSString alloc] initWithFormat:@"%@Images",name]];
     for (int i=1; i<=enemyAnimatedAtlas.textureNames.count; i++) {
         //NSLog(@"type %@ %d",name,i);
@@ -50,10 +50,10 @@ const int kAnimationFrames = 6;
          ligthFrame = frames[kAnimationFrames-1];
          SKTexture* firstFrame = frames[0];*/
         
-        self.dynamic = YES;
-        self.contactBitMask = kContactEnemy;
-        self.collisionBitMask = kColisionEnemy;
-        self.categoryBitMask = kColisionEnemy;
+        self.physicsBody.dynamic = YES;
+        self.physicsBody.contactTestBitMask = kContactEnemy;
+        self.physicsBody.collisionBitMask = kColisionEnemy;
+        self.physicsBody.categoryBitMask = kColisionEnemy;
         
         _moveRigth = true;
     }
@@ -71,7 +71,7 @@ const int kAnimationFrames = 6;
 
 -(void) stand {
     [self removeAllActions];
-   [self runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:standFrames timePerFrame:0.5 resize:NO restore:YES]] withKey:@"walkingEnemy" ];
+    [self runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:standFrames timePerFrame:0.5 resize:NO restore:YES]] withKey:@"walkingEnemy" ];
 }
 
 -(void) move {
