@@ -44,7 +44,6 @@
 		EAA9EF6018945B3600D198A5 /* right_button.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF2F18945B3500D198A5 /* right_button.png */; };
 		EAA9EF6118945B3600D198A5 /* SceneBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9EF3118945B3500D198A5 /* SceneBackground.m */; };
 		EAA9EF6218945B3600D198A5 /* SceneDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9EF3318945B3500D198A5 /* SceneDirector.m */; };
-		EAA9EF6318945B3600D198A5 /* SimplePhysic.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9EF3518945B3500D198A5 /* SimplePhysic.m */; };
 		EAA9EF6418945B3600D198A5 /* star patter.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF3718945B3500D198A5 /* star patter.png */; };
 		EAA9EF6518945B3600D198A5 /* switch_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF3818945B3500D198A5 /* switch_off@2x.png */; };
 		EAA9EF6618945B3600D198A5 /* switch_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF3918945B3500D198A5 /* switch_on@2x.png */; };
@@ -117,8 +116,6 @@
 		EAA9EF3118945B3500D198A5 /* SceneBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneBackground.m; sourceTree = "<group>"; };
 		EAA9EF3218945B3500D198A5 /* SceneDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDirector.h; sourceTree = "<group>"; };
 		EAA9EF3318945B3500D198A5 /* SceneDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDirector.m; sourceTree = "<group>"; };
-		EAA9EF3418945B3500D198A5 /* SimplePhysic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePhysic.h; sourceTree = "<group>"; };
-		EAA9EF3518945B3500D198A5 /* SimplePhysic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePhysic.m; sourceTree = "<group>"; };
 		EAA9EF3618945B3500D198A5 /* SimplePhysicContactDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePhysicContactDelegate.h; sourceTree = "<group>"; };
 		EAA9EF3718945B3500D198A5 /* star patter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star patter.png"; sourceTree = "<group>"; };
 		EAA9EF3818945B3500D198A5 /* switch_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_off@2x.png"; sourceTree = "<group>"; };
@@ -232,8 +229,6 @@
 				EAA9EF3118945B3500D198A5 /* SceneBackground.m */,
 				EAA9EF3218945B3500D198A5 /* SceneDirector.h */,
 				EAA9EF3318945B3500D198A5 /* SceneDirector.m */,
-				EAA9EF3418945B3500D198A5 /* SimplePhysic.h */,
-				EAA9EF3518945B3500D198A5 /* SimplePhysic.m */,
 				EAA9EF3618945B3500D198A5 /* SimplePhysicContactDelegate.h */,
 				EAA9EF3718945B3500D198A5 /* star patter.png */,
 				EAA9EF3818945B3500D198A5 /* switch_off@2x.png */,
@@ -414,7 +409,6 @@
 				EAA9EF6A18945B3600D198A5 /* ViewController.m in Sources */,
 				EAA9EF5818945B3600D198A5 /* Heart.m in Sources */,
 				EAA9EF5C18945B3600D198A5 /* main.m in Sources */,
-				EAA9EF6318945B3600D198A5 /* SimplePhysic.m in Sources */,
 				EAA9EF6118945B3600D198A5 /* SceneBackground.m in Sources */,
 				EAA9EF5318945B3600D198A5 /* Girl.m in Sources */,
 			);
