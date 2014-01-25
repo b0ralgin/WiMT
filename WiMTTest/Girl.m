@@ -9,7 +9,6 @@
 #import "Girl.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
-#import "Mask.h"
 
 static NSString* const girlDarkStand[] = {@"GirlStand0", @"GirlStand1", @"GirlStand2", @"GirlStand3", @"GirlStand4", @"GirlStand5", @"GirlStand6", @"GirlStand7", nil};
 static NSString* const girlDarkMove[] = {@"GirlWalk0", @"GirlWalk1", @"GirlWalk2", @"GirlWalk3", @"GirlWalk4", @"GirlWalk5", @"GirlWalk6", @"GirlWalk7", nil};
@@ -319,6 +318,8 @@ typedef enum {ATTACK_STATE, PASSIVE_STATE} GirlAttackStateType;
             [self jump];
         }
     }
+    
+    [super update:dt];
 }
 
 - (void)jump {

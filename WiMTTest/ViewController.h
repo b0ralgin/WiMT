@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 #import "BedroomScene.h"
+#import "LivingScene.h"
 #import "SceneDirector.h"
 #import "MenuScene.h"
 @interface ViewController : UIViewController

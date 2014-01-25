@@ -10,14 +10,14 @@
 #import "GameObject.h"
 
 static NSString *const tilesFilename = @"bedroom";
-static const float nearRatio = 0.1;
-static const float farRatio = 0.25;
+static const float nearRatio = 0.0;
+static const float farRatio = 0.03;
 
 @implementation SceneBackground {
     NSMutableArray* tileSpriteList;
     SKTexture* forestTexture;
     SKTexture* startTexture;
-    SKSpriteNode* forestSprite;
+    SKNode* forestSprite;
     
     NSMutableArray *nearParalaxList;
     NSMutableArray *farParalaxList;
@@ -36,7 +36,9 @@ static const float farRatio = 0.25;
         
         forestTexture = [SKTexture textureWithImageNamed:@"forest patter"];
         startTexture = [SKTexture textureWithImageNamed:@"star patter"];
-        forestSprite = nil;
+        forestSprite = [SKNode node];
+    
+        forestSprite.zPosition = -1000;
         
         backgroundWidth = 0;
         xPos = 0;
@@ -80,17 +82,27 @@ static const float farRatio = 0.25;
         [tileSprite setLightTexture:tileLightTexture];
         [tileSpriteList addObject:tileSprite];
         [tileSprite setParent:cropNode];
+        tileSprite.zPosition = -2;
         tileSprite.position = CGPointMake(backgroundWidth + 0.5*tileSprite.size.width, 0.5*tileSprite.size.height);
         
         backgroundWidth += tileSprite.size.width;
     }
     
-    [forestSprite removeAllChildren];
-    [forestSprite removeFromParent];
+    if (forestSprite.parent == nil) {
+        [[self scene] addChild:forestSprite];
+    }
     
-    forestSprite = [SKSpriteNode spriteNodeWithTexture:startTexture size:CGSizeMake(2*backgroundWidth, startTexture.size.height)];
-    [self addChild:forestSprite];
-    forestSprite.zPosition = -1;
+    [forestSprite removeAllChildren];
+    
+    for (int i = -6000; i < backgroundWidth + 6000; i += forestTexture.size.width) {
+        SKSpriteNode* sprite = [SKSpriteNode spriteNodeWithTexture:startTexture];
+        sprite.position = CGPointMake(i + 0.5*sprite.size.width, 0.5*sprite.size.height);
+        [forestSprite addChild:sprite];
+        
+        sprite = [SKSpriteNode spriteNodeWithTexture:forestTexture];
+        sprite.position = CGPointMake(i + 0.5*sprite.size.width, 0.5*sprite.size.height);
+        [forestSprite addChild:sprite];
+    }
 }
 
 - (float)backgroundWidth {
@@ -98,8 +110,9 @@ static const float farRatio = 0.25;
 }
 
 - (void)moveBackground:(float)xPosition {
-    xPos = nearRatio * xPosition - 0.5 * nearRatio * backgroundWidth;
-    float position = xPos;
+    xPos = xPosition - 0.5 * backgroundWidth;
+    forestSprite.position = CGPointMake(farRatio * xPos, forestSprite.position.y);
+    float position = nearRatio * xPos;
     
     for (SKSpriteNode* node in tileSpriteList) {
         node.position = CGPointMake(roundf(position + 0.5*node.size.width), node.position.y);
