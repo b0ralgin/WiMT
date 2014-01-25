@@ -53,7 +53,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     {
         Heart *heart = _heartList[i];
         damage = [heart damage:damage];
-        if(damage<=0)
+        if(damage <= 0)
         {
             break;
         }
@@ -167,13 +167,8 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     [background moveBackground:position.x];
 }
 
--(void)update:(CFTimeInterval)currentTime {
-    float dt = (lastTime == 0)?0: currentTime - lastTime;
-    lastTime =  currentTime;
-    
-    [self updateNodeChildrens:self WithTime:dt];
-    
-    /* Called before each frame is rendered */
+- (void)didSimulatePhysics {
+    [self updateNodeChildrens:self WithTime:0.03];
 }
 
 - (void)updateNodeChildrens:(SKNode*)node WithTime:(NSTimeInterval)dt {
@@ -204,6 +199,12 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         [nodeB setGround];
     }
     
+    //Switch
+    if ((contact.bodyA.categoryBitMask == kCategoryList[SWITCH_OBJECT] && contact.bodyB.categoryBitMask == kCategoryList[GIRL_OBJECT]) ||
+        (contact.bodyB.categoryBitMask == kCategoryList[SWITCH_OBJECT] && contact.bodyA.categoryBitMask == kCategoryList[GIRL_OBJECT])) {
+        [self lightOn];
+    }
+    
     //NSLog(@"%d",(contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask));
     if ((contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask) == 0b00001) {
         NSLog(@"damage");
@@ -220,5 +221,26 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     }
 }
 
+- (void)lightOn {
+    darkSideNode.hidden = YES;
+}
+
+- (void)addObject:(NSString*)objName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
+    GameObject* obj = [GameObject spriteNodeWithImageNamed:objName];
+    obj.physicsBody.dynamic = dyn;
+    SetMask(obj.physicsBody, objType);
+    obj.position = CGPointMake(roundf(pos.x + 0.5*obj.size.width), roundf(pos.y + 0.5*obj.size.height));
+    
+    [obj setParent:darkSideNode];
+}
+
+- (void)addWallObject:(NSString*)objName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
+    GameObject* obj = [GameObject spriteNodeWithImageNamed:objName];
+    obj.physicsBody.dynamic = dyn;
+    SetMask(obj.physicsBody, objType);
+    obj.position = CGPointMake(roundf(pos.x + 0.5*obj.size.width), roundf(pos.y + 0.5*obj.size.height));
+    
+    [obj setParent:background];
+}
 
 @end

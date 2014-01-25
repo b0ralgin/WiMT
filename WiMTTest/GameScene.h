@@ -19,5 +19,7 @@
 
 - (void)loadLevel;
 - (void)initRoomBound:(float)width;
+- (void)addObject:(NSString*)objName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn;
+//- (void)addWallObject:(NSString*)objName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn;
 
 @end

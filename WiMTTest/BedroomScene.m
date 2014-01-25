@@ -22,31 +22,22 @@
 
 - (void)initBackground{
     background = [SceneBackground node];
-    [self addChild:background];
+    [darkSideNode addChild:background];
     background.zPosition = -1;
     
-    [background setTileList:@[@"BedroomDark", @"BedroomWindowDark", @"BedroomDark"] LightVersion:nil];
+    [background setTileList:@[@"BedroomDark", @"BedroomWindowDark", @"BedroomDark"] LightVersion:@[@"BedroomLight", @"BedroomWindowLight", @"BedroomLight"]];
 }
 
 - (void)initObjects {
-    [self addObject:@"Bed" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(0, 120) Dynamic:NO];
+    [self addObject:@"BedDark" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(0, 120) Dynamic:NO];
     [self addObject:@"Chair" WithObjectType:BOX_OBJECT OnPos:CGPointMake(250, 108) Dynamic:YES];
     [self addObject:@"Carpet" WithObjectType:TRAP_OBJECT OnPos:CGPointMake(400, 100) Dynamic:NO];
-    [self addObject:@"Picture" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(400, 500) Dynamic:NO];
+    [self addObject:@"BedroomPicture" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(600, 500) Dynamic:NO];
     [self addObject:@"ToyBox" WithObjectType:BOX_OBJECT OnPos:CGPointMake(600, 108) Dynamic:NO];
     [self addObject:@"Doll" WithObjectType:ENEMY_OBJECT OnPos:CGPointMake(750, 108) Dynamic:YES];
-    [self addObject:@"Shelf" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(900, 500) Dynamic:NO];
+    [self addObject:@"BedroomShelf" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(1100, 500) Dynamic:NO];
     [self addObject:@"switch_off" WithObjectType:SWITCH_OBJECT OnPos:CGPointMake(1050, 400) Dynamic:NO];
-    [self addObject:@"Door" WithObjectType:DOOR_OBJECT OnPos:CGPointMake(1200, 120) Dynamic:NO];
-}
-
-- (void)addObject:(NSString*)objName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
-    GameObject* obj = [GameObject spriteNodeWithImageNamed:objName];
-    obj.physicsBody.dynamic = dyn;
-    SetMask(obj.physicsBody, objType);
-    obj.position = CGPointMake(roundf(pos.x + 0.5*obj.size.width), roundf(pos.y + 0.5*obj.size.height));
-    
-    [obj setParent:darkSideNode];
+    [self addObject:@"BedroomDoorClose" WithObjectType:DOOR_OBJECT OnPos:CGPointMake(1200, 120) Dynamic:NO];
 }
 
 @end

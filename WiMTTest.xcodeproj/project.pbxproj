@@ -37,10 +37,10 @@
 		A7C634871894415600E09FD7 /* tvStandImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A7C6345E1894415600E09FD7 /* tvStandImages.atlas */; };
 		A7C6348A1894415600E09FD7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C634621894415600E09FD7 /* ViewController.m */; };
 		A7C6349218944A4700E09FD7 /* Mask.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C6349118944A4700E09FD7 /* Mask.m */; };
-		A7C63495189452F400E09FD7 /* living room day.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C63493189452F400E09FD7 /* living room day.png */; };
-		A7C63496189452F400E09FD7 /* living room night.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C63494189452F400E09FD7 /* living room night.png */; };
-		A7C6349A1894538600E09FD7 /* forest patter.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C634981894538600E09FD7 /* forest patter.png */; };
-		A7C6349B1894538600E09FD7 /* star patter.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C634991894538600E09FD7 /* star patter.png */; };
+		A7C63495189452F400E09FD7 /* living room day@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C63493189452F400E09FD7 /* living room day@2x.png */; };
+		A7C63496189452F400E09FD7 /* living room night@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C63494189452F400E09FD7 /* living room night@2x.png */; };
+		A7C6349A1894538600E09FD7 /* forest patter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C634981894538600E09FD7 /* forest patter@2x.png */; };
+		A7C6349B1894538600E09FD7 /* star patter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C634991894538600E09FD7 /* star patter@2x.png */; };
 		A7C6349E189453AB00E09FD7 /* switch_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C6349C189453AB00E09FD7 /* switch_off@2x.png */; };
 		A7C6349F189453AB00E09FD7 /* switch_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C6349D189453AB00E09FD7 /* switch_on@2x.png */; };
 		EAA9EE5518942C2200D198A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5418942C2200D198A5 /* Foundation.framework */; };
@@ -108,10 +108,10 @@
 		A7C634631894415600E09FD7 /* WiMTTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WiMTTest-Prefix.pch"; sourceTree = "<group>"; };
 		A7C6349018944A4700E09FD7 /* Mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mask.h; sourceTree = "<group>"; };
 		A7C6349118944A4700E09FD7 /* Mask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mask.m; sourceTree = "<group>"; };
-		A7C63493189452F400E09FD7 /* living room day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "living room day.png"; path = "bedRoom/living room day.png"; sourceTree = "<group>"; };
-		A7C63494189452F400E09FD7 /* living room night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "living room night.png"; path = "bedRoom/living room night.png"; sourceTree = "<group>"; };
-		A7C634981894538600E09FD7 /* forest patter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forest patter.png"; sourceTree = "<group>"; };
-		A7C634991894538600E09FD7 /* star patter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star patter.png"; sourceTree = "<group>"; };
+		A7C63493189452F400E09FD7 /* living room day@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "living room day@2x.png"; path = "bedRoom/living room day@2x.png"; sourceTree = "<group>"; };
+		A7C63494189452F400E09FD7 /* living room night@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "living room night@2x.png"; path = "bedRoom/living room night@2x.png"; sourceTree = "<group>"; };
+		A7C634981894538600E09FD7 /* forest patter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forest patter@2x.png"; sourceTree = "<group>"; };
+		A7C634991894538600E09FD7 /* star patter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star patter@2x.png"; sourceTree = "<group>"; };
 		A7C6349C189453AB00E09FD7 /* switch_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_off@2x.png"; sourceTree = "<group>"; };
 		A7C6349D189453AB00E09FD7 /* switch_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_on@2x.png"; sourceTree = "<group>"; };
 		EAA9EE5118942C2200D198A5 /* WiMTTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiMTTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,8 +238,8 @@
 			children = (
 				A7C6349C189453AB00E09FD7 /* switch_off@2x.png */,
 				A7C6349D189453AB00E09FD7 /* switch_on@2x.png */,
-				A7C634981894538600E09FD7 /* forest patter.png */,
-				A7C634991894538600E09FD7 /* star patter.png */,
+				A7C634981894538600E09FD7 /* forest patter@2x.png */,
+				A7C634991894538600E09FD7 /* star patter@2x.png */,
 			);
 			name = "Universal objects";
 			sourceTree = "<group>";
@@ -247,8 +247,8 @@
 		A7C63497189452FC00E09FD7 /* Living room */ = {
 			isa = PBXGroup;
 			children = (
-				A7C63493189452F400E09FD7 /* living room day.png */,
-				A7C63494189452F400E09FD7 /* living room night.png */,
+				A7C63493189452F400E09FD7 /* living room day@2x.png */,
+				A7C63494189452F400E09FD7 /* living room night@2x.png */,
 			);
 			name = "Living room";
 			sourceTree = "<group>";
@@ -362,7 +362,7 @@
 			files = (
 				A7C6347A1894415600E09FD7 /* jump_button.png in Resources */,
 				A7C634791894415600E09FD7 /* Images.xcassets in Resources */,
-				A7C63495189452F400E09FD7 /* living room day.png in Resources */,
+				A7C63495189452F400E09FD7 /* living room day@2x.png in Resources */,
 				A7C6349E189453AB00E09FD7 /* switch_off@2x.png in Resources */,
 				A7C634761894415600E09FD7 /* fullHeart@2x~ipad.png in Resources */,
 				A7C6349F189453AB00E09FD7 /* switch_on@2x.png in Resources */,
@@ -371,15 +371,15 @@
 				A7C634751894415600E09FD7 /* emptyHeart@2x~ipad.png in Resources */,
 				A7C634771894415600E09FD7 /* halfHeart@2x~ipad.png in Resources */,
 				A7C634661894415600E09FD7 /* Main_iPhone.storyboard in Resources */,
-				A7C6349A1894538600E09FD7 /* forest patter.png in Resources */,
+				A7C6349A1894538600E09FD7 /* forest patter@2x.png in Resources */,
 				A7C634651894415600E09FD7 /* Main_iPad.storyboard in Resources */,
 				A7C6347B1894415600E09FD7 /* left_button.png in Resources */,
 				A7C6341E189440C500E09FD7 /* InfoPlist.strings in Resources */,
 				A7C634741894415600E09FD7 /* GirlAssets.xcassets in Resources */,
 				A7C6347E1894415600E09FD7 /* ObjectAssets.xcassets in Resources */,
-				A7C63496189452F400E09FD7 /* living room night.png in Resources */,
+				A7C63496189452F400E09FD7 /* living room night@2x.png in Resources */,
 				A7C634701894415600E09FD7 /* Game-Info.plist in Resources */,
-				A7C6349B1894538600E09FD7 /* star patter.png in Resources */,
+				A7C6349B1894538600E09FD7 /* star patter@2x.png in Resources */,
 				A7C6346D1894415600E09FD7 /* InfoPlist.strings in Resources */,
 				A7C6341F189440C500E09FD7 /* GameTests-Info.plist in Resources */,
 			);
