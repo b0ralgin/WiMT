@@ -47,14 +47,14 @@ static const uint32_t kContactList[] = {
 };
 
 static const uint32_t kCategoryList[] = {
-    0b00000, //Room
-    0b00111, //Box
-    0b01011, //Trap
-    0b01101, //Enemy
-    0b01000, //Candy
-    0b01000, //Switch
-    0b01000, //Door
-    0b00001  //Girl
+    0b0000000, //Room
+    0b0000111, //Box
+    0b0001011, //Trap
+    0b0001101, //Enemy
+    0b0001000, //Candy
+    0b0101000, //Switch
+    0b1001000, //Door
+    0b0000001  //Girl
 };
 
 extern void SetMask(SKPhysicsBody* body, GameObjectType objType);

@@ -105,7 +105,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     SetMask(ceiling.physicsBody, BOX_OBJECT);
     [self addChild:ceiling];
     
-    GameObject *leftWall = [GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(100, self.size.height)];
+    GameObject *leftWall = [GameObject spriteNodeWithImageNamed:@"wall2"];//[GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(100, self.size.height)];
     leftWall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:leftWall.size];
     leftWall.physicsBody.dynamic = NO;
     leftWall.physicsBody.allowsRotation = NO;
@@ -113,7 +113,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     SetMask(leftWall.physicsBody, BOX_OBJECT);
     [self addChild:leftWall];
     
-    GameObject *rightWall = [GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(100, self.size.height)];
+    GameObject *rightWall = [GameObject spriteNodeWithImageNamed:@"wall2"];[GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(100, self.size.height)];
     rightWall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rightWall.size];
     rightWall.physicsBody.dynamic = NO;
     rightWall.physicsBody.allowsRotation = NO;
@@ -205,6 +205,14 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         [self lightOn];
     }
     
+    //Door
+    if (contact.bodyA.categoryBitMask == kCategoryList[DOOR_OBJECT] && contact.bodyB.categoryBitMask == kCategoryList[GIRL_OBJECT]) {
+        [self openDoor:(GameObject*)contact.bodyA.node];
+    }
+    if (contact.bodyB.categoryBitMask == kCategoryList[DOOR_OBJECT] && contact.bodyA.categoryBitMask == kCategoryList[GIRL_OBJECT]) {
+        [self openDoor:(GameObject*)contact.bodyB.node];
+    }
+    
     //NSLog(@"%d",(contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask));
     if ((contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask) == 0b00001) {
         NSLog(@"damage");
@@ -225,8 +233,13 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     darkSideNode.hidden = YES;
 }
 
+- (void)openDoor:(GameObject*)door {
+   //Переход на сл уровень
+}
+
 - (void)addObject:(NSString*)objName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
     GameObject* obj = [GameObject spriteNodeWithImageNamed:objName];
+    
     obj.physicsBody.dynamic = dyn;
     SetMask(obj.physicsBody, objType);
     obj.position = CGPointMake(roundf(pos.x + 0.5*obj.size.width), roundf(pos.y + 0.5*obj.size.height));
@@ -234,13 +247,21 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     [obj setParent:darkSideNode];
 }
 
-- (void)addWallObject:(NSString*)objName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
-    GameObject* obj = [GameObject spriteNodeWithImageNamed:objName];
+- (void)addAnimateObject:(NSArray*)objNameList WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
+    NSMutableArray* animationList = [NSMutableArray new];
+    for (NSString* textureName in objNameList) {
+        [animationList addObject:[SKTexture textureWithImageNamed:textureName]];
+    }
+    
+    GameObject* obj = [GameObject spriteNodeWithTexture:[animationList firstObject]];
+    [obj addAnimation:animationList ByName:@"Start animation"];
+    [obj startAnimation:@"Start animation"];
+    
     obj.physicsBody.dynamic = dyn;
     SetMask(obj.physicsBody, objType);
     obj.position = CGPointMake(roundf(pos.x + 0.5*obj.size.width), roundf(pos.y + 0.5*obj.size.height));
     
-    [obj setParent:background];
+    [obj setParent:darkSideNode];
 }
 
 @end
