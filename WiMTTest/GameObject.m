@@ -19,7 +19,7 @@ static NSTimeInterval const animationDelay = 0.05;
     self = [super initWithImageNamed:name];
     
     if (self != nil) {
-        lightCopy = [SKSpriteNode spriteNodeWithImageNamed:name];
+        lightCopy = [SKSpriteNode spriteNodeWithTexture:self.texture];
         animationDictionary = [NSMutableDictionary new];
         
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
@@ -78,7 +78,8 @@ static NSTimeInterval const animationDelay = 0.05;
 
 - (void)setParent:(SKNode *)parent {
     [parent addChild:self];
-    //[[parent scene] addChild:lightCopy];
+    [[parent scene] addChild:lightCopy];
+    lightCopy.zPosition = -10;
 }
 
 - (void)setLightTexture:(SKTexture *)texture {
@@ -92,7 +93,16 @@ static NSTimeInterval const animationDelay = 0.05;
 }
 
 - (void)update:(NSTimeInterval)dt {
-    lightCopy.position = self.position;
+    CGPoint pos = self.position;
+    SKNode* node = self;
+    
+    while (node.parent != [node scene]) {
+        node = node.parent;
+        pos.x += node.position.x;
+        pos.y += node.position.y;
+    }
+    
+    lightCopy.position = pos;
 }
 
 - (void)setCustomBodyRect:(CGRect)rect {
@@ -110,6 +120,11 @@ static NSTimeInterval const animationDelay = 0.05;
 
 - (void)setGround {
     
+}
+
+- (void)setZPosition:(CGFloat)zPosition {
+    //lightCopy.zPosition = zPosition;
+    [super setZPosition:zPosition];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "Mask.h"
 
 @interface GameObject : SKSpriteNode
 {
