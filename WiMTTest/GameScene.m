@@ -108,6 +108,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     GameObject *leftWall = [GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(100, self.size.height)];
     leftWall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:leftWall.size];
     leftWall.physicsBody.dynamic = NO;
+    leftWall.physicsBody.friction =0;
     leftWall.physicsBody.allowsRotation = NO;
     leftWall.position = CGPointMake(-0.5*leftWall.size.width, self.size.height/2);
     SetMask(leftWall.physicsBody, BOX_OBJECT);
@@ -116,6 +117,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     GameObject *rightWall = [GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(100, self.size.height)];
     rightWall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rightWall.size];
     rightWall.physicsBody.dynamic = NO;
+        leftWall.physicsBody.friction =0;
     rightWall.physicsBody.allowsRotation = NO;
     rightWall.position = CGPointMake(width + 0.5*rightWall.size.width, self.size.height/2);
     SetMask(rightWall.physicsBody, BOX_OBJECT);
@@ -203,21 +205,8 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     if ([nodeB physicsBody].velocity.dy == 0 && [nodeB respondsToSelector:@selector(setGround)]) {
         [nodeB setGround];
     }
-    
-    //NSLog(@"%d",(contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask));
-    if ((contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask) == 0b00001) {
-        NSLog(@"damage");
-    }
-    
-    Enemy* node;
-    if ((contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask) == 0b10001) {
-        if (contact.bodyA.contactTestBitMask == 17) {
-            node = (Enemy*)contact.bodyA.node;
-        } else {
-            node = (Enemy*)contact.bodyB.node;
-        }
-        //[node move];
-    }
+
+
 }
 
 

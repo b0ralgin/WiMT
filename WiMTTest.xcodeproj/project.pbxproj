@@ -43,6 +43,7 @@
 		A7C6349B1894538600E09FD7 /* star patter.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C634991894538600E09FD7 /* star patter.png */; };
 		A7C6349E189453AB00E09FD7 /* switch_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C6349C189453AB00E09FD7 /* switch_off@2x.png */; };
 		A7C6349F189453AB00E09FD7 /* switch_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C6349D189453AB00E09FD7 /* switch_on@2x.png */; };
+		E9C5C6A51894667B0062E4FA /* LivingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C5C6A41894667B0062E4FA /* LivingScene.m */; };
 		EAA9EE5518942C2200D198A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5418942C2200D198A5 /* Foundation.framework */; };
 		EAA9EE5718942C2200D198A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5618942C2200D198A5 /* CoreGraphics.framework */; };
 		EAA9EE5918942C2200D198A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5818942C2200D198A5 /* UIKit.framework */; };
@@ -108,12 +109,14 @@
 		A7C634631894415600E09FD7 /* WiMTTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WiMTTest-Prefix.pch"; sourceTree = "<group>"; };
 		A7C6349018944A4700E09FD7 /* Mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mask.h; sourceTree = "<group>"; };
 		A7C6349118944A4700E09FD7 /* Mask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mask.m; sourceTree = "<group>"; };
-		A7C63493189452F400E09FD7 /* living room day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "living room day.png"; path = "bedRoom/living room day.png"; sourceTree = "<group>"; };
-		A7C63494189452F400E09FD7 /* living room night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "living room night.png"; path = "bedRoom/living room night.png"; sourceTree = "<group>"; };
+		A7C63493189452F400E09FD7 /* living room day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "living room day.png"; sourceTree = "<group>"; };
+		A7C63494189452F400E09FD7 /* living room night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "living room night.png"; sourceTree = "<group>"; };
 		A7C634981894538600E09FD7 /* forest patter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forest patter.png"; sourceTree = "<group>"; };
 		A7C634991894538600E09FD7 /* star patter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star patter.png"; sourceTree = "<group>"; };
 		A7C6349C189453AB00E09FD7 /* switch_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_off@2x.png"; sourceTree = "<group>"; };
 		A7C6349D189453AB00E09FD7 /* switch_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_on@2x.png"; sourceTree = "<group>"; };
+		E9C5C6A31894667B0062E4FA /* LivingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingScene.h; sourceTree = "<group>"; };
+		E9C5C6A41894667B0062E4FA /* LivingScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingScene.m; sourceTree = "<group>"; };
 		EAA9EE5118942C2200D198A5 /* WiMTTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiMTTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA9EE5418942C2200D198A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EAA9EE5618942C2200D198A5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -174,6 +177,8 @@
 				A7C634311894415600E09FD7 /* InfoPlist.strings */,
 				A7C634331894415600E09FD7 /* Enemy.h */,
 				A7C634341894415600E09FD7 /* Enemy.m */,
+				E9C5C6A31894667B0062E4FA /* LivingScene.h */,
+				E9C5C6A41894667B0062E4FA /* LivingScene.m */,
 				A7C634371894415600E09FD7 /* Game-Info.plist */,
 				A7C634381894415600E09FD7 /* GameObject.h */,
 				A7C634391894415600E09FD7 /* GameObject.m */,
@@ -210,7 +215,9 @@
 		A7C634281894415600E09FD7 /* bedRoom */ = {
 			isa = PBXGroup;
 			children = (
+				A7C63494189452F400E09FD7 /* living room night.png */,
 				A7C6344D1894415600E09FD7 /* ObjectAssets.xcassets */,
+				A7C63493189452F400E09FD7 /* living room day.png */,
 			);
 			path = bedRoom;
 			sourceTree = "<group>";
@@ -247,8 +254,6 @@
 		A7C63497189452FC00E09FD7 /* Living room */ = {
 			isa = PBXGroup;
 			children = (
-				A7C63493189452F400E09FD7 /* living room day.png */,
-				A7C63494189452F400E09FD7 /* living room night.png */,
 			);
 			name = "Living room";
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 			files = (
 				A7C6348A1894415600E09FD7 /* ViewController.m in Sources */,
 				A7C6347D1894415600E09FD7 /* MenuScene.m in Sources */,
+				E9C5C6A51894667B0062E4FA /* LivingScene.m in Sources */,
 				A7C6347C1894415600E09FD7 /* main.m in Sources */,
 				A7C634641894415600E09FD7 /* AppDelegate.m in Sources */,
 				A7C6346E1894415600E09FD7 /* Enemy.m in Sources */,
