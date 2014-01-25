@@ -11,10 +11,9 @@
 #import "Button.h"
 #import "Mask.h"
 #import "SceneBackground.h"
-#import "SimplePhysic.h"
 #import "Heart.h"
 
-@interface GameScene : SKScene<GirlMovedDelegate, SimplePhysicContactDelegate> {
+@interface GameScene : SKScene<GirlMovedDelegate, SKPhysicsContactDelegate> {
     SceneBackground *background;
     SKCropNode* darkSideNode;
 }

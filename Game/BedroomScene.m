@@ -24,16 +24,16 @@
     [self addChild:background];
     background.zPosition = -1;
     
-    [background setTileList:@[@"BedroomDark", @"BedroomDark", @"BedroomDark", @"BedroomDark", @"BedroomDark"] LightVersion:nil];
+    [background setTileList:@[@"BedroomDark", @"BedroomWindowDark", @"BedroomWindowDark", @"BedroomDark", @"BedroomDark"] LightVersion:nil];
 }
 
 - (void)initObjects {
     GameObject* toyBox = [GameObject spriteNodeWithImageNamed:@"ToyBox"];
-    toyBox.dynamic = NO;
-    toyBox.categoryBitMask = kCollisionBox;
-    toyBox.collisionBitMask = kCollisionBox;
-    toyBox.contactBitMask = kContactRoom;
-    toyBox.position = CGPointMake(200, 50);
+    toyBox.physicsBody.dynamic = YES;
+    toyBox.physicsBody.categoryBitMask = kCollisionBox;
+    toyBox.physicsBody.collisionBitMask = kCollisionBox;
+    toyBox.physicsBody.contactTestBitMask = kContactRoom;
+    toyBox.position = CGPointMake(400, 250);
     
     [toyBox setParent:darkSideNode];
 }

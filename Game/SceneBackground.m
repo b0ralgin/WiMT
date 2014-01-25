@@ -61,6 +61,10 @@ static const float farRatio = 0.25;
         }
         
         GameObject* tileSprite = [GameObject spriteNodeWithTexture:tileTexture];
+        tileSprite.physicsBody.dynamic = NO;
+        tileSprite.physicsBody.categoryBitMask = 0;
+        tileSprite.physicsBody.collisionBitMask = 0;
+        tileSprite.physicsBody.contactTestBitMask = 0;
         [tileSprite setLightTexture:tileLightTexture];
         [tileSpriteList addObject:tileSprite];
         [self addChild:tileSprite];
@@ -71,15 +75,16 @@ static const float farRatio = 0.25;
 }
 
 - (float)backgroundWidth {
-    return (1-nearRatio)*backgroundWidth;
+    return backgroundWidth;
 }
 
 - (void)moveBackground:(float)xPosition {
-    float offset = xPosition - xPos;
-    xPos = xPosition;
+    xPos = nearRatio * xPosition - 0.5 * nearRatio * backgroundWidth;
+    float position = xPos;
     
-    for (SKNode* node in tileSpriteList) {
-        node.position = CGPointMake(node.position.x - nearRatio*offset, node.position.y);
+    for (SKSpriteNode* node in tileSpriteList) {
+        node.position = CGPointMake(roundf(position + 0.5*node.size.width), node.position.y);
+        position += node.size.width;
     }
 }
 
