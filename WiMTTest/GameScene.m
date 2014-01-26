@@ -29,6 +29,9 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         darkSideNode.zPosition = 100;
         [self addChild:darkSideNode];
         
+        SKSpriteNode* vignette = [SKSpriteNode spriteNodeWithImageNamed:@"vignette"];
+        [darkSideNode addChild:vignette];
+        
         [self loadLevel];
         [self initGirl];
         [self initHealth];
@@ -46,6 +49,10 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         puf.zPosition = 2000;
     }
     return self;
+}
+
+- (void)startAnimation {
+    
 }
 
 - (void)loadLevel {
@@ -257,7 +264,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     [[SceneDirector shared] runNextLevel];
 }
 
-- (void)addObject:(NSString*)objName Light:(NSString*)lightName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
+- (GameObject*)addObject:(NSString*)objName Light:(NSString*)lightName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
     GameObject* obj = [GameObject spriteNodeWithImageNamed:objName];
     if (lightName != nil) {
         [obj setLightTexture:[SKTexture textureWithImageNamed:lightName]];
@@ -268,6 +275,8 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     obj.position = CGPointMake(roundf(pos.x + 0.5*obj.size.width), roundf(pos.y + 0.5*obj.size.height));
     
     [obj setParent:darkSideNode];
+    
+    return obj;
 }
 
 - (Enemy*)addEnemy:(NSString*)enemyName Light:(NSString*)lightName OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {

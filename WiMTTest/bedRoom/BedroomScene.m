@@ -12,6 +12,7 @@
 @implementation BedroomScene
 {
     NSMutableArray *_eventList;
+    Trap* mucus;
 }
 
 - (void)loadLevel {
@@ -52,10 +53,10 @@
     story3.alpha = 0.0;
     
     SKAction* showSprite = [SKAction fadeAlphaTo:1.0 duration:2.0];
-    SKAction* hideSprite = [SKAction fadeAlphaTo:0.0 duration:0.0];
+    SKAction* hideSprite = [SKAction fadeAlphaTo:0.0 duration:1.0];
     SKAction* wait0 = [SKAction waitForDuration:1.0];
-    SKAction* wait1 = [SKAction waitForDuration:3.0];
-    SKAction* wait2 = [SKAction waitForDuration:6.0];
+    SKAction* wait1 = [SKAction waitForDuration:4.0];
+    SKAction* wait2 = [SKAction waitForDuration:8.0];
     
     [mindBuble runAction:[SKAction sequence:@[showSprite, wait0, hideSprite, showSprite, wait0, hideSprite, showSprite, wait0, hideSprite]]];
     [story1 runAction:[SKAction sequence:@[showSprite, wait0, hideSprite]]];
@@ -75,20 +76,23 @@
 
 - (void)initObjects {
     [self addObject:@"BedDark" Light:@"BedLight" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(0, 120) Dynamic:NO];
-    [self addObject:@"BedroomChairDark" Light:@"BedroomChairLight" WithObjectType:BOX_OBJECT OnPos:CGPointMake(250, 108) Dynamic:YES];
-    Trap* mucus = [self addTrap:@"Mucus" Light:@"Carpet" OnPos:CGPointMake(400, 100) Dynamic:NO];
-    [self addObject:@"BedroomPicture" Light:nil WithObjectType:ROOM_OBJECT OnPos:CGPointMake(600, 500) Dynamic:NO];
-    [self addObject:@"ToyBox" Light:nil WithObjectType:BOX_OBJECT OnPos:CGPointMake(600, 108) Dynamic:NO];
-    [self addObject:@"BedroomShelf" Light:nil WithObjectType:ROOM_OBJECT OnPos:CGPointMake(1100, 500) Dynamic:NO];
-    [self addObject:@"switch_off" Light:nil WithObjectType:SWITCH_OBJECT OnPos:CGPointMake(1050, 550) Dynamic:NO];
-    [self addObject:@"BedroomDoorClose" Light:nil WithObjectType:DOOR_OBJECT OnPos:CGPointMake(1200, 120) Dynamic:NO];
-    Enemy* doll = [self addEnemy:@"Doll" Light:@"DollLight" OnPos:CGPointMake(1000, 108) Dynamic:YES];
+    [self addObject:@"BedroomChairDark" Light:@"BedroomChairLight" WithObjectType:BOX_OBJECT OnPos:CGPointMake(450, 108) Dynamic:YES];
+    mucus = [self addTrap:@"Mucus" Light:@"Carpet" OnPos:CGPointMake(800, 100) Dynamic:NO];
+    [self addObject:@"BedroomPicture" Light:nil WithObjectType:ROOM_OBJECT OnPos:CGPointMake(500, 500) Dynamic:NO];
+    [self addObject:@"ToyBox" Light:nil WithObjectType:BOX_OBJECT OnPos:CGPointMake(1000, 108) Dynamic:NO];
+    [self addObject:@"BedroomShelf" Light:nil WithObjectType:ROOM_OBJECT OnPos:CGPointMake(1600, 500) Dynamic:NO];
+    [self addObject:@"switch_off" Light:nil WithObjectType:SWITCH_OBJECT OnPos:CGPointMake(1370, 550) Dynamic:NO];
+    [self addObject:@"BedroomDoorClose" Light:nil WithObjectType:DOOR_OBJECT OnPos:CGPointMake(1700, 120) Dynamic:NO];
+    Enemy* doll = [self addEnemy:@"Doll" Light:@"DollLight" OnPos:CGPointMake(1100, 108) Dynamic:YES];
     
     mucus.activeTime = 0;
-    [mucus trapOn];
     
     doll.moveSpeed = 2;
     [doll move];
+}
+
+- (void)startAnimation {
+    [mucus trapOn];
 }
 
 - (void)openDoor:(GameObject*)door {
@@ -103,7 +107,7 @@
 
 -(void)initEvents{
     _eventList = [NSMutableArray new];
-    // 4 advice - privet prijok vrag vikluchatel
+
     Event *event = [[Event alloc] init];
     event.text = @"Hello, I lost my Teddy. Please, help me find Him";
     event.location = 100;
@@ -111,22 +115,22 @@
     
     event = [[Event alloc] init];
     event.text = @"To jump loud shout!";
-    event.location = 200;
+    event.location = 500;
     [_eventList addObject:event];
     
     event = [[Event alloc] init];
     event.text = @"Aaah! This is danger acid! Jump!";
-    event.location = 250;
+    event.location = 700;
     [_eventList addObject:event];
     
     event = [[Event alloc] init];
     event.text = @"I see something dark... I'm scary!";
-    event.location = 350;
+    event.location = 950;
     [_eventList addObject:event];
     
     event = [[Event alloc] init];
     event.text = @"I need to turn light on!";
-    event.location = 400;
+    event.location = 1200;
     [_eventList addObject:event];
 }
 

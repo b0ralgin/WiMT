@@ -26,10 +26,11 @@
 }
 
 - (void)initGirl;
+- (void)startAnimation;
 - (void)loadLevel;
 - (void)initRoomBound:(float)width;
 - (void)openDoor:(GameObject*)door;
-- (void)addObject:(NSString*)objName Light:(NSString*)lightName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn;
+- (GameObject*)addObject:(NSString*)objName Light:(NSString*)lightName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn;
 - (Enemy*)addEnemy:(NSString*)enemyName Light:(NSString*)lightName OnPos:(CGPoint)pos Dynamic:(BOOL)dyn;
 - (Trap*)addTrap:(NSString*)trapName Light:(NSString*)lightName OnPos:(CGPoint)pos Dynamic:(BOOL)dyn;
 //- (void)addWallObject:(NSString*)objName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn;
