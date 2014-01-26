@@ -221,7 +221,11 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
             [(Enemy*)contact.bodyA.node damage:1];
         }
     }
-    
+    if (contact.bodyA.categoryBitMask == kCategoryList[CHAINSAW_OBJECT] && _girl.isAttack) {
+        if ([contact.bodyB.node respondsToSelector:@selector(damage:)]) {
+            [(Enemy*)contact.bodyB.node damage:1];
+        }
+    }
     if (contact.bodyB.categoryBitMask == kCategoryList[GIRL_OBJECT]) {
         if ([contact.bodyB.node.name isEqualToString:@"Girl"]) {
             if (contact.bodyA.categoryBitMask == kCategoryList[ENEMY_OBJECT] || contact.bodyA.categoryBitMask == kCategoryList[TRAP_OBJECT]) {
