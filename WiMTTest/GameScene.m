@@ -39,6 +39,8 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
 }
 
 - (void)damage:(int)damage {
+    
+    
     for (int i = _heartList.count-1; i>=0; i--) {
         Heart *heart = _heartList[i];
         damage = [heart damage:damage];
@@ -50,7 +52,6 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     if (damage > 0) {
         //DEFEAT
     }
-    
 }
 
 - (void)initHealth{
