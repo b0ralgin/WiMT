@@ -33,8 +33,12 @@
         // Create and configure the scene.
         CGSize size = CGSizeMake(1024, 768);
         CGSize sizeView =skView.bounds.size;
+<<<<<<< HEAD
     
         SKScene * scene = [BedroomScene sceneWithSize:size];
+=======
+        SKScene * scene = [LivingScene sceneWithSize:size];
+>>>>>>> 11fc0c947d98ff362cf6f449a63ab07f5aa6fea5
         scene.scaleMode = SKSceneScaleModeAspectFill;
         
         // Present the scene.
@@ -46,10 +50,6 @@
     gameLevelList = [NSMutableArray new];
     [gameLevelList addObject:[BedroomScene sceneWithSize:CGSizeMake(1024, 768)]];
     [gameLevelList addObject:[LivingScene sceneWithSize:CGSizeMake(1024, 768)]];
-    
-    for (SKScene* scene in gameLevelList) {
-        scene.scaleMode = SKSceneScaleModeAspectFill;
-    }
 }
 
 - (BOOL)shouldAutorotate

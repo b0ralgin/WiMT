@@ -15,6 +15,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
 @implementation GameScene {
     NSMutableArray *_heartList;
     GameObject* puf;
+    float offset;
 }
 
 - (instancetype)initWithSize:(CGSize)size
@@ -133,6 +134,8 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
+        //location.x -= offset;
+        
         if (CGRectContainsPoint(leftRect, location)) {
             [_girl moveLeft];
         }
@@ -150,6 +153,8 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
 }
 
 -(void)moveGirlTo:(CGPoint)position {
+    offset = position.x;
+    
     //NSLog(@"%f", self.position.x);
     for(int i = 0; i < _heartList.count; i++){
         Heart *heart = _heartList[i];
@@ -211,9 +216,9 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         }
     }
     
-    if (contact.bodyB.categoryBitMask == kCategoryList[CHAINSAW_OBJECT]) {
-        if ([contact.bodyB.node respondsToSelector:@selector(damage:)]) {
-            [(Enemy*)contact.bodyB.node damage:1];
+    if (contact.bodyB.categoryBitMask == kCategoryList[CHAINSAW_OBJECT] && _girl.isAttack) {
+        if ([contact.bodyA.node respondsToSelector:@selector(damage:)]) {
+            [(Enemy*)contact.bodyA.node damage:1];
         }
     }
     

@@ -158,9 +158,9 @@ typedef enum {NORMAL_STATE, GIRL_OFF_STATE} GirlActiveStateType;
 
 - (void)initWeapon {
     weapon = [GameObject spriteNodeWithImageNamed:activeWeapon[0]];
+    SetMask(weapon.physicsBody, CHAINSAW_OBJECT);
     weapon.physicsBody.dynamic = NO;
     weapon.position = weaponOffset;
-    SetMask(weapon.physicsBody, CHAINSAW_OBJECT);
     
     [self addChild:weapon];
     
@@ -350,7 +350,6 @@ typedef enum {NORMAL_STATE, GIRL_OFF_STATE} GirlActiveStateType;
     
     attackState = ATTACK_STATE;
     
-    weapon.physicsBody.categoryBitMask = weaponCategoryMask;
     weapon.hidden = NO;
     
     [self startAnimation];
@@ -363,7 +362,6 @@ typedef enum {NORMAL_STATE, GIRL_OFF_STATE} GirlActiveStateType;
     
     attackState = PASSIVE_STATE;
     
-    weapon.physicsBody.categoryBitMask = 0;
     weapon.hidden = YES;
     
     [self startAnimation];
@@ -458,6 +456,10 @@ typedef enum {NORMAL_STATE, GIRL_OFF_STATE} GirlActiveStateType;
     [self stopMoving];
     [self stopAttack];
     activeState = GIRL_OFF_STATE;
+}
+
+- (BOOL)isAttack {
+    return !weapon.hidden;
 }
 
 @end

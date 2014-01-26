@@ -22,9 +22,11 @@ static NSTimeInterval const animationDelay = 0.05;
         lightCopy = [SKSpriteNode spriteNodeWithTexture:self.texture];
         animationDictionary = [NSMutableDictionary new];
         
-        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
-        self.physicsBody.allowsRotation = NO;
-        self.physicsBody.friction = 1.0;
+        if (self.size.width > 0 && self.size.height > 0) {
+            self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+            self.physicsBody.allowsRotation = NO;
+            self.physicsBody.friction = 1.0;
+        }
     }
     
     return self;
@@ -37,9 +39,11 @@ static NSTimeInterval const animationDelay = 0.05;
         lightCopy = [SKSpriteNode spriteNodeWithTexture:texture];
         animationDictionary = [NSMutableDictionary new];
         
-        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
-        self.physicsBody.allowsRotation = NO;
-        self.physicsBody.friction = 1.0;
+        if (self.size.width > 0 && self.size.height > 0) {
+            self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+            self.physicsBody.allowsRotation = NO;
+            self.physicsBody.friction = 1.0;
+        }
     }
     
     return self;

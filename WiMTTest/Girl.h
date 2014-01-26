@@ -18,12 +18,10 @@
 - (void)stopMoving;
 - (void)jump;
 - (void)startOpenDoorAnimation;
-- (void)setWeaponContactBitMask:(uint32_t)mask;
-- (void)setWeaponCategoryBitMask:(uint32_t)mask;
-- (void)setWeaponCollisionBitMask:(uint32_t)mask;
 - (void)stopAttack;
 - (void)resumeAttack;
 - (void)turnOn;
 - (void)turnOff;
+- (BOOL)isAttack;
 
 @end
