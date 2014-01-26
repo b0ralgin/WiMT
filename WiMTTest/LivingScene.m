@@ -39,6 +39,9 @@
     [self addObject:@"switch_off" Light:nil WithObjectType:SWITCH_OBJECT OnPos:CGPointMake(2500, 500) Dynamic:NO];
     Enemy* tv = [self addEnemy:@"TV" Light:@"TVLight" OnPos:CGPointMake(1700, 108) Dynamic:YES];
     [self addObject:@"ChairDark" Light:@"ChairLight" WithObjectType:BOX_OBJECT OnPos:CGPointMake(2700, 108) Dynamic:YES];
+    
+    tv.moveSpeed = 2;
+    [tv move];
 }
 
 
