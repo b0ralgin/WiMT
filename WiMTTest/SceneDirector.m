@@ -18,7 +18,6 @@ static SceneDirector *instance = nil;
 + (SceneDirector *) shared{
     if(instance == nil){
         instance = [[SceneDirector alloc] init];
-        ;
     }
     return instance;
 }

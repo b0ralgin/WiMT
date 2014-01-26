@@ -70,6 +70,10 @@
 
 -(void)runLevel:(int)levelNumber{
     SKView * skView = (SKView *)self.view;
+    if (levelNumber >= gameLevelList.count) {
+        return;
+    }
+    
     GameScene *nextLevel = gameLevelList[levelNumber];
     [skView presentScene:nextLevel transition:[SKTransition fadeWithColor:[UIColor blackColor] duration:2.0]];
 }
