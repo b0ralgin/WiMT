@@ -14,6 +14,8 @@
 		A7C634AB1894940400E09FD7 /* BedroomScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C634AA1894940400E09FD7 /* BedroomScene.m */; };
 		A7C634AE1894941F00E09FD7 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C634AD1894941F00E09FD7 /* Event.m */; };
 		EA7D57981894857900546170 /* LivingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7D57971894857900546170 /* LivingScene.m */; };
+		EA7D57B11894D0BD00546170 /* chair_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7D57AF1894D0BD00546170 /* chair_dark.png */; };
+		EA7D57B21894D0BD00546170 /* chair_light.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7D57B01894D0BD00546170 /* chair_light.png */; };
 		EAA9EE5518942C2200D198A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5418942C2200D198A5 /* Foundation.framework */; };
 		EAA9EE5718942C2200D198A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5618942C2200D198A5 /* CoreGraphics.framework */; };
 		EAA9EE5918942C2200D198A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5818942C2200D198A5 /* UIKit.framework */; };
@@ -77,6 +79,8 @@
 		A7C634AD1894941F00E09FD7 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		EA7D57961894857900546170 /* LivingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingScene.h; sourceTree = "<group>"; };
 		EA7D57971894857900546170 /* LivingScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingScene.m; sourceTree = "<group>"; };
+		EA7D57AF1894D0BD00546170 /* chair_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chair_dark.png; path = "../../../../Dropbox/transit/Global Game Jam/art/enemies/level2/chair_dark.png"; sourceTree = "<group>"; };
+		EA7D57B01894D0BD00546170 /* chair_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chair_light.png; path = "../../../../Dropbox/transit/Global Game Jam/art/enemies/level2/chair_light.png"; sourceTree = "<group>"; };
 		EAA9EE5118942C2200D198A5 /* WiMTTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiMTTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA9EE5418942C2200D198A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EAA9EE5618942C2200D198A5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -228,6 +232,8 @@
 				EAA9EF2C18945B3500D198A5 /* MenuScene.h */,
 				EAA9EF2D18945B3500D198A5 /* MenuScene.m */,
 				EAA9EF2E18945B3500D198A5 /* ObjectAssets.xcassets */,
+				EA7D57AF1894D0BD00546170 /* chair_dark.png */,
+				EA7D57B01894D0BD00546170 /* chair_light.png */,
 				EAA9EF2F18945B3500D198A5 /* right_button.png */,
 				EAA9EF3018945B3500D198A5 /* SceneBackground.h */,
 				EAA9EF3118945B3500D198A5 /* SceneBackground.m */,
@@ -361,11 +367,13 @@
 				EAA9EF4718945B3500D198A5 /* Main_iPhone.storyboard in Resources */,
 				EAA9EF5A18945B3600D198A5 /* jump_button.png in Resources */,
 				EAA9EF4618945B3500D198A5 /* Main_iPad.storyboard in Resources */,
+				EA7D57B21894D0BD00546170 /* chair_light.png in Resources */,
 				A746EE6D1894B80C00EAEE8C /* MucusTrap.xcassets in Resources */,
 				A746EE681894A96D00EAEE8C /* DollAssets.xcassets in Resources */,
 				EAA9EF6018945B3600D198A5 /* right_button.png in Resources */,
 				EAA9EF4C18945B3500D198A5 /* InfoPlist.strings in Resources */,
 				EAA9EF6718945B3600D198A5 /* tvEnemyImages.atlas in Resources */,
+				EA7D57B11894D0BD00546170 /* chair_dark.png in Resources */,
 				EAA9EF6618945B3600D198A5 /* switch_on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
