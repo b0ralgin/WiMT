@@ -40,6 +40,8 @@
 }
 
 - (void)damage:(int)hit {
+    NSLog(@"%@ damage %d" , self, hit);
+    
     if (self.health <= 0) {
         return;
     }

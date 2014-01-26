@@ -160,6 +160,7 @@ typedef enum {NORMAL_STATE, GIRL_OFF_STATE} GirlActiveStateType;
     weapon = [GameObject spriteNodeWithImageNamed:activeWeapon[0]];
     weapon.physicsBody.dynamic = NO;
     weapon.position = weaponOffset;
+    SetMask(weapon.physicsBody, CHAINSAW_OBJECT);
     
     [self addChild:weapon];
     

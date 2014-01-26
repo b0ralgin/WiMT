@@ -18,7 +18,7 @@ static NSString* const enemyAttackAnimationName = @"Enemy attack";
 @property (assign,nonatomic) int health;
 @property (assign,nonatomic) float moveSpeed;
 
-- (void)damage:(int) hit;
+- (void)damage:(int)hit;
 - (void)move;
 - (void)stand;
 - (void)attack;

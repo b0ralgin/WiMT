@@ -21,7 +21,8 @@ typedef enum {
     CANDY_OBJECT = 4,
     SWITCH_OBJECT = 5,
     DOOR_OBJECT = 6,
-    GIRL_OBJECT = 7
+    GIRL_OBJECT = 7,
+    CHAINSAW_OBJECT = 8
 } GameObjectType;
 
 static const uint32_t kCollisionList[] = {
@@ -32,7 +33,8 @@ static const uint32_t kCollisionList[] = {
     0b00000, //Candy
     0b00000, //Switch
     0b00000, //Door
-    0b00100  //Girl
+    0b00100, //Girl
+    0b00000  //Chainsaw
 };
 
 static const uint32_t kContactList[] = {
@@ -43,7 +45,8 @@ static const uint32_t kContactList[] = {
     0b00000, //Candy
     0b00000, //Switch
     0b00000, //Door
-    0b01000  //Girl
+    0b01000, //Girl
+    0b00001  //Chainsaw
 };
 
 static const uint32_t kCategoryList[] = {
@@ -54,7 +57,8 @@ static const uint32_t kCategoryList[] = {
     0b0001000, //Candy
     0b0101000, //Switch
     0b1001000, //Door
-    0b0000001  //Girl
+    0b0000001, //Girl
+    0b1000000  //Chainsaw
 };
 
 extern void SetMask(SKPhysicsBody* body, GameObjectType objType);

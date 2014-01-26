@@ -10,6 +10,7 @@
 #import "Girl.h"
 #import "Button.h"
 #import "SceneBackground.h"
+#import "SceneDirector.h"
 #import "Heart.h"
 #import "Enemy.h"
 #import "Trap.h"

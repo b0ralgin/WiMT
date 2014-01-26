@@ -13,7 +13,8 @@ static NSString *const rightButtonFilename = @"right_button.png";
 static NSString *const jumpButtonFilename = @"jump_button.png";
 
 @implementation GameScene {
-       NSMutableArray *_heartList;
+    NSMutableArray *_heartList;
+    GameObject* puf;
 }
 
 - (instancetype)initWithSize:(CGSize)size
@@ -30,6 +31,18 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         [self loadLevel];
         [self initGirl];
         [self initHealth];
+        
+        NSMutableArray* pufList = [NSMutableArray new];
+        for (int i = 0; i < 12; i++) {
+            [pufList addObject:[SKTexture textureWithImageNamed:[NSString stringWithFormat:@"Puf%d", i]]];
+        }
+        
+        puf = [GameObject spriteNodeWithTexture:[pufList firstObject]];
+        puf.physicsBody = nil;
+        [puf addAnimation:pufList ByName:@"Puf"];
+        puf.hidden = YES;
+        [self addChild:puf];
+        puf.zPosition = 2000;
     }
     return self;
 }
@@ -39,7 +52,9 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
 }
 
 - (void)damage:(int)damage {
+    puf.hidden = NO;
     
+    [puf startOnceAnimation:@"Puf" WithEndBlock:^() {puf.hidden = YES;}];
     
     for (int i = _heartList.count-1; i>=0; i--) {
         Heart *heart = _heartList[i];
@@ -59,6 +74,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     
     for(uint i = 0; i< 3; i++){
         Heart *heart = [Heart node];
+        heart.zPosition = 2000;
         [self addChild:heart];
         [_heartList addObject:heart];
         heart.position = CGPointMake((i+1)*70, 680);
@@ -140,6 +156,8 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         heart.position = CGPointMake(position.x - 400 + 70*i, heart.position.y);
     }
     
+    puf.position = position;
+    
     [background moveBackground:position.x];
 }
 
@@ -193,6 +211,12 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         }
     }
     
+    if (contact.bodyB.categoryBitMask == kCategoryList[CHAINSAW_OBJECT]) {
+        if ([contact.bodyB.node respondsToSelector:@selector(damage:)]) {
+            [(Enemy*)contact.bodyB.node damage:1];
+        }
+    }
+    
     if (contact.bodyB.categoryBitMask == kCategoryList[GIRL_OBJECT]) {
         if ([contact.bodyB.node.name isEqualToString:@"Girl"]) {
             if (contact.bodyA.categoryBitMask == kCategoryList[ENEMY_OBJECT] || contact.bodyA.categoryBitMask == kCategoryList[TRAP_OBJECT]) {
@@ -220,7 +244,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
 }
 
 - (void)openDoor:(GameObject*)door {
-   //Переход на сл уровень
+    [[SceneDirector shared] runNextLevel];
 }
 
 - (void)addObject:(NSString*)objName Light:(NSString*)lightName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {

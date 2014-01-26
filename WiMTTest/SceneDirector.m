@@ -9,7 +9,6 @@
 #import "SceneDirector.h"
 #import "ViewController.h"
 
-
 @implementation SceneDirector{
     ViewController *_viewController;
     int currentLevel;
@@ -26,15 +25,15 @@ static SceneDirector *instance = nil;
 
 -(instancetype)init{
     if(( self = [super init] )){
-        currentLevel = -1;
+        currentLevel = 0;
+        _viewController = nil;
     }
     return self;
 }
 
 -(void)setViewController: (ViewController *) viewController{
-    _viewController=viewController;
+    _viewController = viewController;
 }
-
 
 -(void)runNextLevel{
     int firstLevelNumber = 0;
