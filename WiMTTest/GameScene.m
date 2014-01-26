@@ -256,7 +256,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     [[SceneDirector shared] runNextLevel];
 }
 
-- (void)addObject:(NSString*)objName Light:(NSString*)lightName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
+- (GameObject*)addObject:(NSString*)objName Light:(NSString*)lightName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
     GameObject* obj = [GameObject spriteNodeWithImageNamed:objName];
     if (lightName != nil) {
         [obj setLightTexture:[SKTexture textureWithImageNamed:lightName]];
@@ -267,6 +267,8 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     obj.position = CGPointMake(roundf(pos.x + 0.5*obj.size.width), roundf(pos.y + 0.5*obj.size.height));
     
     [obj setParent:darkSideNode];
+    
+    return obj;
 }
 
 - (Enemy*)addEnemy:(NSString*)enemyName Light:(NSString*)lightName OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
