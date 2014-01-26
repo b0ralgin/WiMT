@@ -200,10 +200,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     if ([nodeB physicsBody].velocity.dy == 0 && [nodeB respondsToSelector:@selector(setGround)]) {
         [nodeB setGround];
     }
-<<<<<<< HEAD
 
-
-=======
     
     //Switch
     if ((contact.bodyA.categoryBitMask == kCategoryList[SWITCH_OBJECT] && contact.bodyB.categoryBitMask == kCategoryList[GIRL_OBJECT]) ||
@@ -233,7 +230,6 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         }
         //[node move];
     }
->>>>>>> 161ad61d079f7ae109d59cc996539370ad23df16
 }
 
 - (void)lightOn {

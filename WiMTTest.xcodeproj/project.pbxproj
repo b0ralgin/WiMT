@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA7D57981894857900546170 /* LivingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7D57971894857900546170 /* LivingScene.m */; };
+		EA7D57A81894885E00546170 /* hang_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7D57A71894885E00546170 /* hang_dark.png */; };
+		EA7D57AB189489AC00546170 /* painting_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7D57A9189489AC00546170 /* painting_dark.png */; };
+		EA7D57AC189489AC00546170 /* painting_light.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7D57AA189489AC00546170 /* painting_light.png */; };
 		EAA9EE5518942C2200D198A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5418942C2200D198A5 /* Foundation.framework */; };
 		EAA9EE5718942C2200D198A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5618942C2200D198A5 /* CoreGraphics.framework */; };
 		EAA9EE5918942C2200D198A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5818942C2200D198A5 /* UIKit.framework */; };
@@ -66,6 +70,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA7D57961894857900546170 /* LivingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingScene.h; sourceTree = "<group>"; };
+		EA7D57971894857900546170 /* LivingScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingScene.m; sourceTree = "<group>"; };
+		EA7D57A71894885E00546170 /* hang_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hang_dark.png; path = "../../../../Dropbox/transit/Global Game Jam/art/enemies/level2/hang_dark.png"; sourceTree = "<group>"; };
+		EA7D57A9189489AC00546170 /* painting_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = painting_dark.png; path = "../../../../Dropbox/transit/Global Game Jam/art/enemies/level2/painting_dark.png"; sourceTree = "<group>"; };
+		EA7D57AA189489AC00546170 /* painting_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = painting_light.png; path = "../../../../Dropbox/transit/Global Game Jam/art/enemies/level2/painting_light.png"; sourceTree = "<group>"; };
 		EAA9EE5118942C2200D198A5 /* WiMTTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiMTTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA9EE5418942C2200D198A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EAA9EE5618942C2200D198A5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -224,9 +233,14 @@
 				EAA9EF2C18945B3500D198A5 /* MenuScene.h */,
 				EAA9EF2D18945B3500D198A5 /* MenuScene.m */,
 				EAA9EF2E18945B3500D198A5 /* ObjectAssets.xcassets */,
+				EA7D57A9189489AC00546170 /* painting_dark.png */,
+				EA7D57AA189489AC00546170 /* painting_light.png */,
+				EA7D57A71894885E00546170 /* hang_dark.png */,
 				EAA9EF2F18945B3500D198A5 /* right_button.png */,
 				EAA9EF3018945B3500D198A5 /* SceneBackground.h */,
 				EAA9EF3118945B3500D198A5 /* SceneBackground.m */,
+				EA7D57961894857900546170 /* LivingScene.h */,
+				EA7D57971894857900546170 /* LivingScene.m */,
 				EAA9EF3218945B3500D198A5 /* SceneDirector.h */,
 				EAA9EF3318945B3500D198A5 /* SceneDirector.m */,
 				EAA9EF3618945B3500D198A5 /* SimplePhysicContactDelegate.h */,
@@ -356,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAA9EF6818945B3600D198A5 /* tvStandImages.atlas in Resources */,
+				EA7D57AB189489AC00546170 /* painting_dark.png in Resources */,
 				EAA9EF6B18945B3600D198A5 /* InfoPlist.strings in Resources */,
 				EAA9EF4918945B3500D198A5 /* living room night.png in Resources */,
 				EAA9EF5718945B3600D198A5 /* halfHeart@2x~ipad.png in Resources */,
@@ -376,6 +391,8 @@
 				EAA9EF4718945B3500D198A5 /* Main_iPhone.storyboard in Resources */,
 				EAA9EF5A18945B3600D198A5 /* jump_button.png in Resources */,
 				EAA9EF4618945B3500D198A5 /* Main_iPad.storyboard in Resources */,
+				EA7D57AC189489AC00546170 /* painting_light.png in Resources */,
+				EA7D57A81894885E00546170 /* hang_dark.png in Resources */,
 				EAA9EF6018945B3600D198A5 /* right_button.png in Resources */,
 				EAA9EF4C18945B3500D198A5 /* InfoPlist.strings in Resources */,
 				EAA9EF6718945B3600D198A5 /* tvEnemyImages.atlas in Resources */,
@@ -399,6 +416,7 @@
 			files = (
 				EAA9EF5E18945B3600D198A5 /* MenuScene.m in Sources */,
 				EAA9EF5118945B3600D198A5 /* GameObject.m in Sources */,
+				EA7D57981894857900546170 /* LivingScene.m in Sources */,
 				EAA9EF4D18945B3600D198A5 /* Enemy.m in Sources */,
 				EAA9EF4B18945B3500D198A5 /* Button.m in Sources */,
 				EAA9EF4518945B3500D198A5 /* AppDelegate.m in Sources */,
