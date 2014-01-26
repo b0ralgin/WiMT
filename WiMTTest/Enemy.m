@@ -8,76 +8,81 @@
 
 #import "Enemy.h"
 
-const int kAnimationFrames = 6;
-
 @implementation Enemy
 {
-    int _health,_damage, _speed;
-    NSMutableArray* walkFrames;
-    NSMutableArray* standFrames;
-    NSMutableArray* actionFrames;
-    SKTexture* deadFrame;
-    SKTexture* ligthFrame;
-    NSArray* enemyFrames;
+    NSTimeInterval lastCollision;
 }
 
--(void) loadTextures:(NSString*) name array:(NSMutableArray*) arrayOfTextures {
-    NSMutableArray* frames = [NSMutableArray array];
-    SKTextureAtlas* enemyAnimatedAtlas = [SKTextureAtlas atlasNamed:[[NSString alloc] initWithFormat:@"%@Images",name]];
-    for (int i=1; i<=enemyAnimatedAtlas.textureNames.count; i++) {
-        //NSLog(@"type %@ %d",name,i);
-        NSString* textureName = [NSString stringWithFormat:@"%@%d",name,i];
-        SKTexture *enemy = [enemyAnimatedAtlas textureNamed:textureName];
-        [arrayOfTextures addObject:enemy];
-    }
-}
-
-- (id)init:(NSString *)type health:(int)health damage:(int)damage {
-    self = [super initWithTexture:standFrames[0]];
+- (instancetype)initWithTexture:(SKTexture *)texture {
+    self = [super initWithTexture:texture];
     
     if (self != nil) {
-        actionFrames = [[NSMutableArray alloc] init];
-        standFrames = [[NSMutableArray alloc] init];
-        walkFrames = [[NSMutableArray alloc] init];
+        self.moveSpeed = 2;
+        self.health = 1;
         
-        [self loadTextures:[[NSString alloc] initWithFormat:@"%@Stand",type] array:standFrames];
-        [self loadTextures:[[NSString alloc] initWithFormat:@"%@Walk",type]  array:walkFrames];
-        /*for (int i=0; i<=kAnimationFrames-3; i++) {
-         [actionFrames addObject:frames[i]];
-         }
-         deadFrame = frames[kAnimationFrames-2];
-         ligthFrame = frames[kAnimationFrames-1];
-         SKTexture* firstFrame = frames[0];*/
-        
-        _moveRigth = true;
+        lastCollision = 0;
     }
     
     return self;
 }
 
--(void) damage:(int)hit {
-    if (_health - _speed <=0) {
-        _health = 0;
-        [self removeAllActions];
-        self.texture = deadFrame;
+- (instancetype)initWithImageNamed:(NSString *)name {
+    self = [super initWithImageNamed:name];
+    
+    if (self != nil) {
+        self.moveSpeed = 2;
+        self.health = 1;
+        
+        lastCollision = 0;
+    }
+    
+    return self;
+}
+
+- (void)damage:(int)hit {
+    if (self.health <= 0) {
+        return;
+    }
+    
+    self.health -= hit;
+    if (self.health <= 0) {
+        [self lightOn];
     }
 }
 
--(void) stand {
-    [self removeAllActions];
-    [self runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:standFrames timePerFrame:0.5 resize:NO restore:YES]] withKey:@"walkingEnemy" ];
+- (void)stand {
+    [self startAnimation:enemyStandAnimationName];
 }
 
--(void) move {
-    _moveRigth =!_moveRigth;
-    //NSLog(@"moveR %d",_moveRigth);
-    [self removeAllActions];
-    [self runAction:[SKAction repeatActionForever:[SKAction moveByX:(_moveRigth?1:-1)*5 y:0 duration:0.1]]];
-    [self runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:walkFrames timePerFrame:0.1 resize:NO restore:YES]] withKey:@"walkingEnemy" ];
+- (void)attack {
+    void (^attackBlock) () = ^() {
+        [self continueMove];
+    };
+    
+    [self startOnceAnimation:enemyAttackAnimationName WithEndBlock:attackBlock];
 }
 
--(void) lightOn {
-    [self removeAllActions];
-    self.texture = ligthFrame;
+- (void)move {
+    NSTimeInterval curTime = [[NSDate date] timeIntervalSince1970];
+    if (lastCollision + 4 > curTime) {
+        return;
+    }
+    
+    lastCollision = curTime;
+    
+    self.xScale *= -1;
+    [self continueMove];
 }
+
+- (void)continueMove {
+    [self startAnimation:enemyWalkAnimationName];
+    [self runAction:[SKAction repeatActionForever:[SKAction moveByX:self.xScale*self.moveSpeed y:0 duration:0.1]]];
+}
+
+- (void)lightOn {
+    [self removeAllActions];
+    SetMask(self.physicsBody, ROOM_OBJECT);
+    self.physicsBody.dynamic = NO;
+}
+
 @end

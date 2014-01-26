@@ -9,16 +9,18 @@
 #import <SpriteKit/SpriteKit.h>
 #import "GameObject.h"
 
+static NSString* const enemyWalkAnimationName = @"Enemy walk";
+static NSString* const enemyStandAnimationName = @"Enemy stand";
+static NSString* const enemyAttackAnimationName = @"Enemy attack";
+
 @interface Enemy : GameObject
 
-@property (assign,nonatomic) int damage;
-@property (assign,nonatomic) int speed;
-@property (assign,nonatomic) bool moveRigth;
+@property (assign,nonatomic) int health;
+@property (assign,nonatomic) float moveSpeed;
 
--(void) lightOn;
--(id) init:(NSString*) type health:(int) health damage:(int) damage;
--(void) damage:(int) hit;
--(void) move;
--(void) stand;
+- (void)damage:(int) hit;
+- (void)move;
+- (void)stand;
+- (void)attack;
 
 @end

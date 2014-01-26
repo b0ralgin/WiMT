@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7159CC41894C48E00590183 /* HeartAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7159CC31894C48E00590183 /* HeartAssets.xcassets */; };
+		A746EE681894A96D00EAEE8C /* DollAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A746EE671894A96D00EAEE8C /* DollAssets.xcassets */; };
+		A746EE6B1894B46C00EAEE8C /* Trap.m in Sources */ = {isa = PBXBuildFile; fileRef = A746EE6A1894B46C00EAEE8C /* Trap.m */; };
+		A746EE6D1894B80C00EAEE8C /* MucusTrap.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A746EE6C1894B80C00EAEE8C /* MucusTrap.xcassets */; };
+		A7C634AB1894940400E09FD7 /* BedroomScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C634AA1894940400E09FD7 /* BedroomScene.m */; };
+		A7C634AE1894941F00E09FD7 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C634AD1894941F00E09FD7 /* Event.m */; };
 		EA7D57981894857900546170 /* LivingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7D57971894857900546170 /* LivingScene.m */; };
-		EA7D57A81894885E00546170 /* hang_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7D57A71894885E00546170 /* hang_dark.png */; };
-		EA7D57AB189489AC00546170 /* painting_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7D57A9189489AC00546170 /* painting_dark.png */; };
-		EA7D57AC189489AC00546170 /* painting_light.png in Resources */ = {isa = PBXBuildFile; fileRef = EA7D57AA189489AC00546170 /* painting_light.png */; };
 		EAA9EE5518942C2200D198A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5418942C2200D198A5 /* Foundation.framework */; };
 		EAA9EE5718942C2200D198A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5618942C2200D198A5 /* CoreGraphics.framework */; };
 		EAA9EE5918942C2200D198A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5818942C2200D198A5 /* UIKit.framework */; };
@@ -21,22 +24,15 @@
 		EAA9EF4518945B3500D198A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9EF0418945B3500D198A5 /* AppDelegate.m */; };
 		EAA9EF4618945B3500D198A5 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF0518945B3500D198A5 /* Main_iPad.storyboard */; };
 		EAA9EF4718945B3500D198A5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF0718945B3500D198A5 /* Main_iPhone.storyboard */; };
-		EAA9EF4818945B3500D198A5 /* living room day.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF0A18945B3500D198A5 /* living room day.png */; };
-		EAA9EF4918945B3500D198A5 /* living room night.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF0B18945B3500D198A5 /* living room night.png */; };
-		EAA9EF4A18945B3500D198A5 /* BedroomScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9EF0D18945B3500D198A5 /* BedroomScene.m */; };
 		EAA9EF4B18945B3500D198A5 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9EF0F18945B3500D198A5 /* Button.m */; };
 		EAA9EF4C18945B3500D198A5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF1018945B3500D198A5 /* InfoPlist.strings */; };
 		EAA9EF4D18945B3600D198A5 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9EF1318945B3500D198A5 /* Enemy.m */; };
-		EAA9EF4E18945B3600D198A5 /* enemyImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF1518945B3500D198A5 /* enemyImages.atlas */; };
 		EAA9EF4F18945B3600D198A5 /* forest patter.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF1618945B3500D198A5 /* forest patter.png */; };
 		EAA9EF5018945B3600D198A5 /* Game-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF1718945B3500D198A5 /* Game-Info.plist */; };
 		EAA9EF5118945B3600D198A5 /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9EF1918945B3500D198A5 /* GameObject.m */; };
 		EAA9EF5218945B3600D198A5 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9EF1B18945B3500D198A5 /* GameScene.m */; };
 		EAA9EF5318945B3600D198A5 /* Girl.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9EF1D18945B3500D198A5 /* Girl.m */; };
 		EAA9EF5418945B3600D198A5 /* GirlAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF1E18945B3500D198A5 /* GirlAssets.xcassets */; };
-		EAA9EF5518945B3600D198A5 /* emptyHeart@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF2118945B3500D198A5 /* emptyHeart@2x~ipad.png */; };
-		EAA9EF5618945B3600D198A5 /* fullHeart@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF2218945B3500D198A5 /* fullHeart@2x~ipad.png */; };
-		EAA9EF5718945B3600D198A5 /* halfHeart@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF2318945B3500D198A5 /* halfHeart@2x~ipad.png */; };
 		EAA9EF5818945B3600D198A5 /* Heart.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9EF2518945B3500D198A5 /* Heart.m */; };
 		EAA9EF5918945B3600D198A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF2618945B3500D198A5 /* Images.xcassets */; };
 		EAA9EF5A18945B3600D198A5 /* jump_button.png in Resources */ = {isa = PBXBuildFile; fileRef = EAA9EF2718945B3500D198A5 /* jump_button.png */; };
@@ -70,11 +66,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A7159CC31894C48E00590183 /* HeartAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HeartAssets.xcassets; sourceTree = "<group>"; };
+		A746EE671894A96D00EAEE8C /* DollAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DollAssets.xcassets; sourceTree = "<group>"; };
+		A746EE691894B46C00EAEE8C /* Trap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trap.h; sourceTree = "<group>"; };
+		A746EE6A1894B46C00EAEE8C /* Trap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trap.m; sourceTree = "<group>"; };
+		A746EE6C1894B80C00EAEE8C /* MucusTrap.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MucusTrap.xcassets; sourceTree = "<group>"; };
+		A7C634A91894940400E09FD7 /* BedroomScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BedroomScene.h; path = bedRoom/BedroomScene.h; sourceTree = "<group>"; };
+		A7C634AA1894940400E09FD7 /* BedroomScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BedroomScene.m; path = bedRoom/BedroomScene.m; sourceTree = "<group>"; };
+		A7C634AC1894941F00E09FD7 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		A7C634AD1894941F00E09FD7 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		EA7D57961894857900546170 /* LivingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingScene.h; sourceTree = "<group>"; };
 		EA7D57971894857900546170 /* LivingScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingScene.m; sourceTree = "<group>"; };
-		EA7D57A71894885E00546170 /* hang_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hang_dark.png; path = "../../../../Dropbox/transit/Global Game Jam/art/enemies/level2/hang_dark.png"; sourceTree = "<group>"; };
-		EA7D57A9189489AC00546170 /* painting_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = painting_dark.png; path = "../../../../Dropbox/transit/Global Game Jam/art/enemies/level2/painting_dark.png"; sourceTree = "<group>"; };
-		EA7D57AA189489AC00546170 /* painting_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = painting_light.png; path = "../../../../Dropbox/transit/Global Game Jam/art/enemies/level2/painting_light.png"; sourceTree = "<group>"; };
 		EAA9EE5118942C2200D198A5 /* WiMTTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiMTTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA9EE5418942C2200D198A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EAA9EE5618942C2200D198A5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -86,16 +88,11 @@
 		EAA9EF0418945B3500D198A5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		EAA9EF0618945B3500D198A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		EAA9EF0818945B3500D198A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		EAA9EF0A18945B3500D198A5 /* living room day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "living room day.png"; sourceTree = "<group>"; };
-		EAA9EF0B18945B3500D198A5 /* living room night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "living room night.png"; sourceTree = "<group>"; };
-		EAA9EF0C18945B3500D198A5 /* BedroomScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BedroomScene.h; sourceTree = "<group>"; };
-		EAA9EF0D18945B3500D198A5 /* BedroomScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BedroomScene.m; sourceTree = "<group>"; };
 		EAA9EF0E18945B3500D198A5 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
 		EAA9EF0F18945B3500D198A5 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Button.m; sourceTree = "<group>"; };
 		EAA9EF1118945B3500D198A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EAA9EF1218945B3500D198A5 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		EAA9EF1318945B3500D198A5 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
-		EAA9EF1518945B3500D198A5 /* enemyImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = enemyImages.atlas; sourceTree = "<group>"; };
 		EAA9EF1618945B3500D198A5 /* forest patter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forest patter.png"; sourceTree = "<group>"; };
 		EAA9EF1718945B3500D198A5 /* Game-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Game-Info.plist"; sourceTree = "<group>"; };
 		EAA9EF1818945B3500D198A5 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
@@ -106,9 +103,6 @@
 		EAA9EF1D18945B3500D198A5 /* Girl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Girl.m; sourceTree = "<group>"; };
 		EAA9EF1E18945B3500D198A5 /* GirlAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GirlAssets.xcassets; sourceTree = "<group>"; };
 		EAA9EF1F18945B3500D198A5 /* GirlMovedDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GirlMovedDelegate.h; sourceTree = "<group>"; };
-		EAA9EF2118945B3500D198A5 /* emptyHeart@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emptyHeart@2x~ipad.png"; sourceTree = "<group>"; };
-		EAA9EF2218945B3500D198A5 /* fullHeart@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fullHeart@2x~ipad.png"; sourceTree = "<group>"; };
-		EAA9EF2318945B3500D198A5 /* halfHeart@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "halfHeart@2x~ipad.png"; sourceTree = "<group>"; };
 		EAA9EF2418945B3500D198A5 /* Heart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Heart.h; sourceTree = "<group>"; };
 		EAA9EF2518945B3500D198A5 /* Heart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Heart.m; sourceTree = "<group>"; };
 		EAA9EF2618945B3500D198A5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -202,14 +196,15 @@
 				EAA9EF0418945B3500D198A5 /* AppDelegate.m */,
 				EAA9EF0518945B3500D198A5 /* Main_iPad.storyboard */,
 				EAA9EF0718945B3500D198A5 /* Main_iPhone.storyboard */,
-				EAA9EF0918945B3500D198A5 /* bedRoom */,
-				EAA9EF0C18945B3500D198A5 /* BedroomScene.h */,
-				EAA9EF0D18945B3500D198A5 /* BedroomScene.m */,
+				A7C634A91894940400E09FD7 /* BedroomScene.h */,
+				A7C634AA1894940400E09FD7 /* BedroomScene.m */,
 				EAA9EF0E18945B3500D198A5 /* Button.h */,
 				EAA9EF0F18945B3500D198A5 /* Button.m */,
 				EAA9EF1018945B3500D198A5 /* InfoPlist.strings */,
 				EAA9EF1218945B3500D198A5 /* Enemy.h */,
 				EAA9EF1318945B3500D198A5 /* Enemy.m */,
+				A746EE691894B46C00EAEE8C /* Trap.h */,
+				A746EE6A1894B46C00EAEE8C /* Trap.m */,
 				EAA9EF1418945B3500D198A5 /* enemyImages */,
 				EAA9EF1618945B3500D198A5 /* forest patter.png */,
 				EAA9EF1718945B3500D198A5 /* Game-Info.plist */,
@@ -221,7 +216,7 @@
 				EAA9EF1D18945B3500D198A5 /* Girl.m */,
 				EAA9EF1E18945B3500D198A5 /* GirlAssets.xcassets */,
 				EAA9EF1F18945B3500D198A5 /* GirlMovedDelegate.h */,
-				EAA9EF2018945B3500D198A5 /* heart */,
+				A7159CC31894C48E00590183 /* HeartAssets.xcassets */,
 				EAA9EF2418945B3500D198A5 /* Heart.h */,
 				EAA9EF2518945B3500D198A5 /* Heart.m */,
 				EAA9EF2618945B3500D198A5 /* Images.xcassets */,
@@ -233,9 +228,6 @@
 				EAA9EF2C18945B3500D198A5 /* MenuScene.h */,
 				EAA9EF2D18945B3500D198A5 /* MenuScene.m */,
 				EAA9EF2E18945B3500D198A5 /* ObjectAssets.xcassets */,
-				EA7D57A9189489AC00546170 /* painting_dark.png */,
-				EA7D57AA189489AC00546170 /* painting_light.png */,
-				EA7D57A71894885E00546170 /* hang_dark.png */,
 				EAA9EF2F18945B3500D198A5 /* right_button.png */,
 				EAA9EF3018945B3500D198A5 /* SceneBackground.h */,
 				EAA9EF3118945B3500D198A5 /* SceneBackground.m */,
@@ -253,35 +245,19 @@
 				EAA9EF3D18945B3500D198A5 /* ViewController.h */,
 				EAA9EF3E18945B3500D198A5 /* ViewController.m */,
 				EAA9EF3F18945B3500D198A5 /* WiMTTest-Prefix.pch */,
+				A7C634AC1894941F00E09FD7 /* Event.h */,
+				A7C634AD1894941F00E09FD7 /* Event.m */,
 			);
 			path = WiMTTest;
-			sourceTree = "<group>";
-		};
-		EAA9EF0918945B3500D198A5 /* bedRoom */ = {
-			isa = PBXGroup;
-			children = (
-				EAA9EF0A18945B3500D198A5 /* living room day.png */,
-				EAA9EF0B18945B3500D198A5 /* living room night.png */,
-			);
-			path = bedRoom;
 			sourceTree = "<group>";
 		};
 		EAA9EF1418945B3500D198A5 /* enemyImages */ = {
 			isa = PBXGroup;
 			children = (
-				EAA9EF1518945B3500D198A5 /* enemyImages.atlas */,
+				A746EE671894A96D00EAEE8C /* DollAssets.xcassets */,
+				A746EE6C1894B80C00EAEE8C /* MucusTrap.xcassets */,
 			);
 			path = enemyImages;
-			sourceTree = "<group>";
-		};
-		EAA9EF2018945B3500D198A5 /* heart */ = {
-			isa = PBXGroup;
-			children = (
-				EAA9EF2118945B3500D198A5 /* emptyHeart@2x~ipad.png */,
-				EAA9EF2218945B3500D198A5 /* fullHeart@2x~ipad.png */,
-				EAA9EF2318945B3500D198A5 /* halfHeart@2x~ipad.png */,
-			);
-			path = heart;
 			sourceTree = "<group>";
 		};
 		EAA9EF4018945B3500D198A5 /* WiMTTestTests */ = {
@@ -370,29 +346,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAA9EF6818945B3600D198A5 /* tvStandImages.atlas in Resources */,
-				EA7D57AB189489AC00546170 /* painting_dark.png in Resources */,
 				EAA9EF6B18945B3600D198A5 /* InfoPlist.strings in Resources */,
-				EAA9EF4918945B3500D198A5 /* living room night.png in Resources */,
-				EAA9EF5718945B3600D198A5 /* halfHeart@2x~ipad.png in Resources */,
+				A7159CC41894C48E00590183 /* HeartAssets.xcassets in Resources */,
 				EAA9EF6418945B3600D198A5 /* star patter.png in Resources */,
-				EAA9EF4818945B3500D198A5 /* living room day.png in Resources */,
 				EAA9EF5918945B3600D198A5 /* Images.xcassets in Resources */,
 				EAA9EF6C18945B3600D198A5 /* GameTests-Info.plist in Resources */,
 				EAA9EF6518945B3600D198A5 /* switch_off@2x.png in Resources */,
-				EAA9EF5518945B3600D198A5 /* emptyHeart@2x~ipad.png in Resources */,
 				EAA9EF5418945B3600D198A5 /* GirlAssets.xcassets in Resources */,
 				EAA9EF5B18945B3600D198A5 /* left_button.png in Resources */,
-				EAA9EF4E18945B3600D198A5 /* enemyImages.atlas in Resources */,
 				EAA9EF4F18945B3600D198A5 /* forest patter.png in Resources */,
 				EAA9EF5018945B3600D198A5 /* Game-Info.plist in Resources */,
 				EAA9EF6918945B3600D198A5 /* tvWalkImages.atlas in Resources */,
-				EAA9EF5618945B3600D198A5 /* fullHeart@2x~ipad.png in Resources */,
 				EAA9EF5F18945B3600D198A5 /* ObjectAssets.xcassets in Resources */,
 				EAA9EF4718945B3500D198A5 /* Main_iPhone.storyboard in Resources */,
 				EAA9EF5A18945B3600D198A5 /* jump_button.png in Resources */,
 				EAA9EF4618945B3500D198A5 /* Main_iPad.storyboard in Resources */,
-				EA7D57AC189489AC00546170 /* painting_light.png in Resources */,
-				EA7D57A81894885E00546170 /* hang_dark.png in Resources */,
+				A746EE6D1894B80C00EAEE8C /* MucusTrap.xcassets in Resources */,
+				A746EE681894A96D00EAEE8C /* DollAssets.xcassets in Resources */,
 				EAA9EF6018945B3600D198A5 /* right_button.png in Resources */,
 				EAA9EF4C18945B3500D198A5 /* InfoPlist.strings in Resources */,
 				EAA9EF6718945B3600D198A5 /* tvEnemyImages.atlas in Resources */,
@@ -418,14 +388,16 @@
 				EAA9EF5118945B3600D198A5 /* GameObject.m in Sources */,
 				EA7D57981894857900546170 /* LivingScene.m in Sources */,
 				EAA9EF4D18945B3600D198A5 /* Enemy.m in Sources */,
+				A7C634AE1894941F00E09FD7 /* Event.m in Sources */,
 				EAA9EF4B18945B3500D198A5 /* Button.m in Sources */,
+				A7C634AB1894940400E09FD7 /* BedroomScene.m in Sources */,
 				EAA9EF4518945B3500D198A5 /* AppDelegate.m in Sources */,
 				EAA9EF5218945B3600D198A5 /* GameScene.m in Sources */,
 				EAA9EF5D18945B3600D198A5 /* Mask.m in Sources */,
 				EAA9EF6218945B3600D198A5 /* SceneDirector.m in Sources */,
-				EAA9EF4A18945B3500D198A5 /* BedroomScene.m in Sources */,
 				EAA9EF6A18945B3600D198A5 /* ViewController.m in Sources */,
 				EAA9EF5818945B3600D198A5 /* Heart.m in Sources */,
+				A746EE6B1894B46C00EAEE8C /* Trap.m in Sources */,
 				EAA9EF5C18945B3600D198A5 /* main.m in Sources */,
 				EAA9EF6118945B3600D198A5 /* SceneBackground.m in Sources */,
 				EAA9EF5318945B3600D198A5 /* Girl.m in Sources */,

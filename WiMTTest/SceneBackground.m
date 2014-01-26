@@ -11,7 +11,7 @@
 
 static NSString *const tilesFilename = @"bedroom";
 static const float nearRatio = 0.0;
-static const float farRatio = 0.03;
+static const float farRatio = 0.15;
 
 @implementation SceneBackground {
     NSMutableArray* tileSpriteList;

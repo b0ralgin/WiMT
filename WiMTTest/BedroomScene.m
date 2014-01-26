@@ -11,13 +11,14 @@
 
 @implementation BedroomScene
 {
-    
+    NSMutableArray *_eventList;
 }
 
 - (void)loadLevel {
     [self initBackground];
     [self initRoomBound:background.backgroundWidth];
     [self initObjects];
+    [self initEvents];
 }
 
 - (void)initBackground{
@@ -40,14 +41,29 @@
     [self addObject:@"BedroomDoorClose" WithObjectType:DOOR_OBJECT OnPos:CGPointMake(1200, 120) Dynamic:NO];
 }
 
+-(void)initEvents{
+    _eventList = [NSMutableArray new];
+    // 3 advice - privet prijok vrag vikluchatel
+    NSString *helloText = @"Hello, I lost my Teddy. Please, help me find Him";
+    float helloLocation = 100;
+    Event *helloEvent = [[Event alloc] init];
+    helloEvent.text = helloText;
+    helloEvent.location = helloLocation;
+    [_eventList addObject:helloEvent];
+    
+}
+
 - (void)openDoor:(GameObject*)door {
     if (!darkSideNode.hidden) {
         return;
     }
-    
+
     [door setLightTexture:[SKTexture textureWithImageNamed:@"BedroomDoorOpen"]];
     
     [super openDoor:door];
 }
 
+//-(void)update:(NSTimeInterval)currentTime{
+//NSLog(@"%f",_girl.position.x);
+//}
 @end

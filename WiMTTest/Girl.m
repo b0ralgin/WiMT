@@ -16,10 +16,10 @@ static NSString* const girlDarkCStand[] = {@"GirlCStand0", @"GirlCStand1", nil};
 static NSString* const girlDarkCMove[] = {@"GirlCWalk0", @"GirlCWalk1", @"GirlCWalk2", @"GirlCWalk3", @"GirlCWalk4", @"GirlCWalk5", @"GirlCWalk6", @"GirlCWalk7", nil};
 static NSString* const girlDarkFly[] = {@"GirlFly0", nil};
 static NSString* const girlDarkFall[] = {@"GirlFall0", nil};
-static NSString* const girlLightStand[] = {@"GirlStand0", nil};
-static NSString* const girlLightMove[] = {@"GirlStand0", nil};
-static NSString* const girlLightFly[] = {@"GirlStand0", nil};
-static NSString* const girlLightFall[] = {@"GirlStand0", nil};
+static NSString* const girlLightStand[] = {@"GirlStand0", @"GirlStand1", @"GirlStand2", @"GirlStand3", @"GirlStand4", @"GirlStand5", @"GirlStand6", @"GirlStand7", nil};
+static NSString* const girlLightMove[] = {@"GirlWalk0", @"GirlWalk1", @"GirlWalk2", @"GirlWalk3", @"GirlWalk4", @"GirlWalk5", @"GirlWalk6", @"GirlWalk7", nil};
+static NSString* const girlLightFly[] = {@"GirlFly0", nil};
+static NSString* const girlLightFall[] = {@"GirlFall0", nil};
 
 static NSString* const activeWeapon[] = {@"Chainsaw0", @"Chainsaw1", nil};
 
@@ -39,12 +39,12 @@ static CGPoint const weaponOffset = {90, -43};
 static NSTimeInterval const animationDelay = 0.05;
 static float const moveSpeed = 50;
 static float const maxSpeed = 250;
-static float const jumpPower = 800;
-static ushort const jumpMaxDuration = 2;
+static float const jumpPower = 400;
 
 typedef enum {GROUND_STATE, FLY_STATE, FALL_STATE} GirlJumpStateType;
 typedef enum {STAND_STATE, MOVE_STATE} GirlMoveStateType;
 typedef enum {ATTACK_STATE, PASSIVE_STATE} GirlAttackStateType;
+typedef enum {NORMAL_STATE, GIRL_OFF_STATE} GirlActiveStateType;
 
 @implementation Girl {
     GameObject* weapon;
@@ -52,8 +52,7 @@ typedef enum {ATTACK_STATE, PASSIVE_STATE} GirlAttackStateType;
     GirlJumpStateType jumpState;
     GirlMoveStateType moveState;
     GirlAttackStateType attackState;
-    
-    int jumpDuration;
+    GirlActiveStateType activeState;
     
     uint32_t weaponCategoryMask;
     
@@ -69,7 +68,7 @@ typedef enum {ATTACK_STATE, PASSIVE_STATE} GirlAttackStateType;
         
         [self setCustomBodyRect:CGRectMake(55, 0, 90, 181)];
         
-        jumpDuration = 0;
+        activeState = NORMAL_STATE;
         jumpState = FALL_STATE;
         moveState = STAND_STATE;
         attackState = PASSIVE_STATE;
@@ -178,7 +177,7 @@ typedef enum {ATTACK_STATE, PASSIVE_STATE} GirlAttackStateType;
 }
 
 - (void)moveLeft {
-    if (moveState == MOVE_STATE && self.xScale < 0) {
+    if (activeState == GIRL_OFF_STATE || (moveState == MOVE_STATE && self.xScale < 0)) {
         return;
     }
     
@@ -189,7 +188,7 @@ typedef enum {ATTACK_STATE, PASSIVE_STATE} GirlAttackStateType;
 }
 
 - (void)moveRight {
-    if (moveState == MOVE_STATE && self.xScale > 0) {
+    if (activeState == GIRL_OFF_STATE || (moveState == MOVE_STATE && self.xScale > 0)) {
         return;
     }
     
@@ -261,7 +260,7 @@ typedef enum {ATTACK_STATE, PASSIVE_STATE} GirlAttackStateType;
     }
 }
 
-- (void)update:(NSTimeInterval)dt {
+- (void)update {
     SKAction* moveSceneAction = [SKAction moveTo:CGPointMake(512-self.position.x, 0) duration:0];
     [[self scene] runAction:moveSceneAction];
     
@@ -273,15 +272,6 @@ typedef enum {ATTACK_STATE, PASSIVE_STATE} GirlAttackStateType;
     
     if (moveState == MOVE_STATE) {
         [self.physicsBody applyImpulse:CGVectorMake(self.xScale*moveSpeed, 0)];
-    }
-    
-    if (jumpDuration > 0 && jumpState == FLY_STATE) {
-        jumpDuration--;
-        [self.physicsBody applyImpulse:CGVectorMake(0, jumpPower*jumpDuration/jumpMaxDuration)];
-        
-        if (jumpDuration <= 0) {
-            [self setFall];
-        }
     }
     
     if (self.physicsBody.velocity.dx > maxSpeed) {
@@ -303,33 +293,35 @@ typedef enum {ATTACK_STATE, PASSIVE_STATE} GirlAttackStateType;
     if (recorder != nil) {
         [recorder updateMeters];
         
-        //double peakPowerForChannel = pow(10, (0.05 * [recorder peakPowerForChannel:0]));
-        
-        double avaragePowerForChannel = 1000 * pow(10, (0.25 * [recorder averagePowerForChannel:0]));
-        
-        if (avaragePowerForChannel > 0.01) {
-            [self beginAttack];
-        }
-        else {
-            [self endAttack];
-        }
-        
-        if (avaragePowerForChannel > 3.5) {
-            [self jump];
+        if (activeState == NORMAL_STATE) {
+            //double peakPowerForChannel = pow(10, (0.05 * [recorder peakPowerForChannel:0]));
+            
+            double avaragePowerForChannel = 1000 * pow(10, (0.25 * [recorder averagePowerForChannel:0]));
+            
+            if (avaragePowerForChannel > 0.01) {
+                [self beginAttack];
+            }
+            else {
+                [self endAttack];
+            }
+            
+            if (avaragePowerForChannel > 3.5) {
+                [self jump];
+            }
         }
     }
     
-    [super update:dt];
+    [super update];
 }
 
 - (void)jump {
-    if (jumpState != GROUND_STATE) {
+    if (activeState == GIRL_OFF_STATE || jumpState != GROUND_STATE) {
         return;
     }
     
     [self stopAttack];
     
-    jumpDuration = jumpMaxDuration;
+    [self.physicsBody applyImpulse:CGVectorMake(0, jumpPower)];
     jumpState = FLY_STATE;
 }
 
@@ -425,7 +417,6 @@ typedef enum {ATTACK_STATE, PASSIVE_STATE} GirlAttackStateType;
     [self stopAttack];
     
     jumpState = FALL_STATE;
-    jumpDuration = 0;
     
     [self startAnimation];
 }
@@ -438,7 +429,6 @@ typedef enum {ATTACK_STATE, PASSIVE_STATE} GirlAttackStateType;
     [self resumeAttack];
     
     jumpState = GROUND_STATE;
-    jumpDuration = 0;
     
     [self startAnimation];
 }
@@ -457,6 +447,16 @@ typedef enum {ATTACK_STATE, PASSIVE_STATE} GirlAttackStateType;
     }
     
     [super setPosition:position];
+}
+
+- (void)turnOn {
+    activeState = NORMAL_STATE;
+}
+
+- (void)turnOff {
+    [self stopMoving];
+    [self stopAttack];
+    activeState = GIRL_OFF_STATE;
 }
 
 @end

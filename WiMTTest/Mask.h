@@ -49,8 +49,8 @@ static const uint32_t kContactList[] = {
 static const uint32_t kCategoryList[] = {
     0b0000000, //Room
     0b0000111, //Box
-    0b0001011, //Trap
-    0b0001101, //Enemy
+    0b0101011, //Trap
+    0b0101101, //Enemy
     0b0001000, //Candy
     0b0101000, //Switch
     0b1001000, //Door

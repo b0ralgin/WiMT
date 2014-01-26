@@ -32,7 +32,7 @@
         // Create and configure the scene.
         CGSize size = CGSizeMake(1024, 768);
         CGSize sizeView =skView.bounds.size;
-        SKScene * scene = [LivingScene sceneWithSize:size];
+        SKScene * scene = [BedroomScene sceneWithSize:size];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         
         // Present the scene.

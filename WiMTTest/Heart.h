@@ -9,5 +9,8 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface Heart : SKSpriteNode
--(int)damage:(int)damage;
+
+- (int)damage:(int)damage;
+- (int)restore:(int)health;
+
 @end

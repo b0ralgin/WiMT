@@ -65,6 +65,18 @@ static NSTimeInterval const animationDelay = 0.05;
     [self runAction:animation];
 }
 
+- (void)startOnceAnimation:(NSString *)animationName WithEndBlock:(void (^)())block {
+    NSArray* animationList = [animationDictionary objectForKey:animationName];
+    if (animationList == nil) {
+        block();
+        return;
+    }
+    
+    SKAction* animation = [SKAction animateWithTextures:animationList timePerFrame:animationDelay];
+    [self removeAllActions];
+    [self runAction:animation completion:block];
+}
+
 - (void)startLightAnimation:(NSString*)animationName {
     NSArray* animationList = [animationDictionary objectForKey:animationName];
     if (animationList == nil) {
@@ -79,7 +91,6 @@ static NSTimeInterval const animationDelay = 0.05;
 - (void)setParent:(SKNode *)parent {
     [parent addChild:self];
     [[parent scene] addChild:lightCopy];
-    lightCopy.zPosition = -10;
 }
 
 - (void)setLightTexture:(SKTexture *)texture {
@@ -92,7 +103,7 @@ static NSTimeInterval const animationDelay = 0.05;
     [super setPosition:position];
 }
 
-- (void)update:(NSTimeInterval)dt {
+- (void)update {
     CGPoint pos = self.position;
     SKNode* node = self;
     
@@ -119,6 +130,10 @@ static NSTimeInterval const animationDelay = 0.05;
 }
 
 - (void)setGround {
+    
+}
+
+- (void)lightOn {
     
 }
 
