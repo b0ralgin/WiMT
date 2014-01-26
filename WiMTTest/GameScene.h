@@ -26,6 +26,7 @@
 }
 
 - (void)initGirl;
+- (void)startAnimation;
 - (void)loadLevel;
 - (void)initRoomBound:(float)width;
 - (void)openDoor:(GameObject*)door;

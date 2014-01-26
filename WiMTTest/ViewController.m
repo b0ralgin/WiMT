@@ -8,9 +8,7 @@
 
 #import "ViewController.h"
 
-@implementation ViewController{
-    NSMutableArray *gameLevelList;
-}
+@implementation ViewController
 
 - (void)viewDidLoad
 {
@@ -22,7 +20,6 @@
     [super viewWillLayoutSubviews];
     
     [[SceneDirector shared] setViewController:self];
-    [self initGameLevels];
     
     // Configure the view.
     SKView * skView = (SKView *)self.view;
@@ -32,23 +29,13 @@
         
         // Create and configure the scene.
         CGSize size = CGSizeMake(1024, 768);
-        CGSize sizeView =skView.bounds.size;
     
-        SKScene * scene = [BedroomScene sceneWithSize:size];
+        GameScene* scene = [BedroomScene sceneWithSize:size];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         
         // Present the scene.
         [skView presentScene:scene];
-    }
-}
-
--(void)initGameLevels{
-    gameLevelList = [NSMutableArray new];
-    [gameLevelList addObject:[BedroomScene sceneWithSize:CGSizeMake(1024, 768)]];
-    [gameLevelList addObject:[LivingScene sceneWithSize:CGSizeMake(1024, 768)]];
-    
-    for (SKScene* scene in gameLevelList) {
-        scene.scaleMode = SKSceneScaleModeAspectFill;
+        [scene startAnimation];
     }
 }
 
@@ -70,11 +57,25 @@
 
 -(void)runLevel:(int)levelNumber{
     SKView * skView = (SKView *)self.view;
-    if (levelNumber >= gameLevelList.count) {
-        return;
+    
+    GameScene *nextLevel = nil;
+    switch (levelNumber) {
+        case 0:
+            nextLevel = [BedroomScene sceneWithSize:CGSizeMake(1024, 768)];
+            break;
+            
+        case 1:
+            nextLevel = [LivingScene sceneWithSize:CGSizeMake(1024, 768)];
+            break;
+            
+        default:
+            return;
     }
     
-    GameScene *nextLevel = gameLevelList[levelNumber];
+    nextLevel.scaleMode = SKSceneScaleModeAspectFill;
+    
     [skView presentScene:nextLevel transition:[SKTransition fadeWithColor:[UIColor blackColor] duration:2.0]];
+    [nextLevel startAnimation];
 }
+
 @end

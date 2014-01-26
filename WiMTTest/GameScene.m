@@ -48,6 +48,10 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     return self;
 }
 
+- (void)startAnimation {
+    
+}
+
 - (void)loadLevel {
     
 }

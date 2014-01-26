@@ -9,6 +9,9 @@
 #import "LivingScene.h"
 #import "Mask.h"
 @implementation LivingScene
+{
+    Trap* spikes;
+}
 
 - (void)loadLevel {
     [self initBackground];
@@ -25,8 +28,7 @@
 
 - (void)initObjects {
     [self addObject:@"HangDark" Light:@"HangLight" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(100, 108) Dynamic:NO];
-    [self addObject:@"ClockDark" Light:@"HangLight" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(400, 500) Dynamic:NO];
-    GameObject* clock = [self addObject:@"ClockDark" Light:@"ClockLight" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(408, 294) Dynamic:NO];
+    [self addObject:@"ClockDark" Light:@"ClockLight" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(400, 500) Dynamic:NO];
     GameObject* weaver = [self addObject:@"WaverDark" Light:@"WaverLight" WithObjectType:ENEMY_OBJECT OnPos:CGPointMake(408, 294) Dynamic:NO];
     [self addObject:@"SofaDark" Light:@"SofaLight" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(700, 120) Dynamic:NO];
     [self addObject:@"PaintingDark" Light:@"PaintingLight" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(800, 500) Dynamic:NO];
@@ -34,7 +36,7 @@
     [self addObject:@"candy" Light:nil WithObjectType:CANDY_OBJECT OnPos:CGPointMake(800, 108) Dynamic:NO];
     [self addObject:@"candy" Light:nil WithObjectType:CANDY_OBJECT OnPos:CGPointMake(900, 108) Dynamic:NO];
     [self addObject:@"ArmchairDark" Light:@"ArmchairLight" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(1300, 108) Dynamic:NO];
-    Trap* spikes = [self addTrap:@"SpikesDark" Light:@"SpikesLight" OnPos:CGPointMake(1700, 100) Dynamic:NO];
+    spikes = [self addTrap:@"SpikesDark" Light:@"SpikesLight" OnPos:CGPointMake(1700, 100) Dynamic:NO];
     [self addObject:@"BedroomDoorClose" Light:nil WithObjectType:DOOR_OBJECT OnPos:CGPointMake(2000, 120) Dynamic:NO];
     [self addObject:@"SpeakerDark" Light:@"SpeakerLight" WithObjectType:BOX_OBJECT OnPos:CGPointMake(2200, 300) Dynamic:NO];
     [self addObject:@"switch_off" Light:nil WithObjectType:SWITCH_OBJECT OnPos:CGPointMake(2500, 500) Dynamic:NO];
@@ -46,11 +48,13 @@
     
     spikes.activeTime = 1.0;
     spikes.passiveTime = 1.5;
-    [spikes trapOn];
     
     tv.moveSpeed = 2;
     [tv move];
 }
 
+- (void)startAnimation {
+    //[spikes trapOn];
+}
 
 @end

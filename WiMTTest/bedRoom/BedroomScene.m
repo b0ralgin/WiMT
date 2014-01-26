@@ -12,6 +12,7 @@
 @implementation BedroomScene
 {
     NSMutableArray *_eventList;
+    Trap* mucus;
 }
 
 - (void)loadLevel {
@@ -76,7 +77,7 @@
 - (void)initObjects {
     [self addObject:@"BedDark" Light:@"BedLight" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(0, 120) Dynamic:NO];
     [self addObject:@"BedroomChairDark" Light:@"BedroomChairLight" WithObjectType:BOX_OBJECT OnPos:CGPointMake(450, 108) Dynamic:YES];
-    Trap* mucus = [self addTrap:@"Mucus" Light:@"Carpet" OnPos:CGPointMake(800, 100) Dynamic:NO];
+    mucus = [self addTrap:@"Mucus" Light:@"Carpet" OnPos:CGPointMake(800, 100) Dynamic:NO];
     [self addObject:@"BedroomPicture" Light:nil WithObjectType:ROOM_OBJECT OnPos:CGPointMake(500, 500) Dynamic:NO];
     [self addObject:@"ToyBox" Light:nil WithObjectType:BOX_OBJECT OnPos:CGPointMake(1000, 108) Dynamic:NO];
     [self addObject:@"BedroomShelf" Light:nil WithObjectType:ROOM_OBJECT OnPos:CGPointMake(1600, 500) Dynamic:NO];
@@ -85,10 +86,13 @@
     Enemy* doll = [self addEnemy:@"Doll" Light:@"DollLight" OnPos:CGPointMake(1100, 108) Dynamic:YES];
     
     mucus.activeTime = 0;
-    [mucus trapOn];
     
     doll.moveSpeed = 2;
     [doll move];
+}
+
+- (void)startAnimation {
+    [mucus trapOn];
 }
 
 - (void)openDoor:(GameObject*)door {
