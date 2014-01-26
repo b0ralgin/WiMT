@@ -7,7 +7,7 @@
 //
 
 #import "GameScene.h"
-
+#import "Event.h"
 @interface BedroomScene : GameScene
 
 @end

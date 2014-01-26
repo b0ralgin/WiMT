@@ -24,19 +24,19 @@
 }
 
 - (void)initObjects {
-    [self addObject:@"LivingPicture" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(150, 500) Dynamic:NO];
-    [self addObject:@"Hang" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(400, 108) Dynamic:NO];
-    [self addObject:@"Clock" WithObjectType:TRAP_OBJECT OnPos:CGPointMake(500, 500) Dynamic:NO];
-    [self addObject:@"Sofa" WithObjectType:TRAP_OBJECT OnPos:CGPointMake(700, 120) Dynamic:NO];
-    [self addObject:@"Flower" WithObjectType:ENEMY_OBJECT OnPos:CGPointMake(750, 108) Dynamic:YES];
-    [self addObject:@"Candy" WithObjectType:CANDY_OBJECT OnPos:CGPointMake(800, 108) Dynamic:NO];
-    [self addObject:@"Candy" WithObjectType:CANDY_OBJECT OnPos:CGPointMake(900, 108) Dynamic:NO];
-    [self addObject:@"LivingChair" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(1000, 108) Dynamic:NO];
-    [self addObject:@"TeethCarpet" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(1200, 100) Dynamic:NO];
-    [self addObject:@"Door" WithObjectType:DOOR_OBJECT OnPos:CGPointMake(1500, 120) Dynamic:NO];
-    [self addObject:@"Speaker" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(1300, 120) Dynamic:NO];
-    [self addObject:@"switch_off" WithObjectType:SWITCH_OBJECT OnPos:CGPointMake(1300, 500) Dynamic:NO];
-    [self addObject:@"TV" WithObjectType:ENEMY_OBJECT OnPos:CGPointMake(1700, 108) Dynamic:YES];
+       [self addObject:@"HangDark" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(100, 108) Dynamic:NO];
+    [self addObject:@"ClockDark" WithObjectType:TRAP_OBJECT OnPos:CGPointMake(400, 500) Dynamic:NO];
+    [self addObject:@"SofaDark" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(700, 120) Dynamic:NO];
+    [self addObject:@"PaintingDark" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(800, 500) Dynamic:NO];
+   // [self addObject:@"Flower" WithObjectType:ENEMY_OBJECT OnPos:CGPointMake(750, 108) Dynamic:YES];
+   // [self addObject:@"Candy" WithObjectType:CANDY_OBJECT OnPos:CGPointMake(800, 108) Dynamic:NO];
+   // [self addObject:@"Candy" WithObjectType:CANDY_OBJECT OnPos:CGPointMake(900, 108) Dynamic:NO];
+    [self addObject:@"ArmchairDark" WithObjectType:BOX_OBJECT OnPos:CGPointMake(1500, 108) Dynamic:NO];
+    [self addObject:@"SpikesLight" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(1700, 100) Dynamic:NO];
+    [self addObject:@"BedroomDoorClose" WithObjectType:DOOR_OBJECT OnPos:CGPointMake(1800, 120) Dynamic:NO];
+    [self addObject:@"SpeakerDark" WithObjectType:ROOM_OBJECT OnPos:CGPointMake(2000, 120) Dynamic:NO];
+    [self addObject:@"switch_off" WithObjectType:SWITCH_OBJECT OnPos:CGPointMake(2050, 500) Dynamic:NO];
+    //[self addObject:@"TV" WithObjectType:ENEMY_OBJECT OnPos:CGPointMake(1700, 108) Dynamic:YES];
 }
 
 - (void)addObject:(NSString*)objName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
