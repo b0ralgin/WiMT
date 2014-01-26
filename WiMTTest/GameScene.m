@@ -221,6 +221,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
             [(Enemy*)contact.bodyA.node damage:1];
         }
     }
+    NSLog(@"Coll %d %d",contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask);
     if (contact.bodyA.categoryBitMask == kCategoryList[CHAINSAW_OBJECT] && _girl.isAttack) {
         if ([contact.bodyB.node respondsToSelector:@selector(damage:)]) {
             [(Enemy*)contact.bodyB.node damage:1];

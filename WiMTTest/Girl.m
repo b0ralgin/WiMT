@@ -161,8 +161,9 @@ typedef enum {NORMAL_STATE, GIRL_OFF_STATE} GirlActiveStateType;
     SetMask(weapon.physicsBody, CHAINSAW_OBJECT);
     weapon.physicsBody.dynamic = NO;
     weapon.position = weaponOffset;
-    
-    [self addChild:weapon];
+   // [ weapon setCustomBodyRect:CGRectMake(0, 0, weapon.size.width/2, weapon.size.height)];
+   
+   // [self addChild:weapon];
     
     NSMutableArray* weaponAnimationList = [NSMutableArray new];
     for (ushort i = 0; activeWeapon[i] != nil; i++) {
@@ -350,8 +351,8 @@ typedef enum {NORMAL_STATE, GIRL_OFF_STATE} GirlActiveStateType;
     
     attackState = ATTACK_STATE;
     
-    weapon.hidden = NO;
-    
+   // weapon.hidden = NO;
+    [self addChild:weapon];
     [self startAnimation];
 }
 
@@ -359,11 +360,10 @@ typedef enum {NORMAL_STATE, GIRL_OFF_STATE} GirlActiveStateType;
     if (attackState == PASSIVE_STATE) {
         return;
     }
-    
     attackState = PASSIVE_STATE;
     
-    weapon.hidden = YES;
-    
+   // weapon.hidden = YES;
+    [weapon removeFromParent];
     [self startAnimation];
 }
 
