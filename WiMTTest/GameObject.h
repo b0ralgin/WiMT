@@ -19,9 +19,11 @@
 - (void)setLightTexture:(SKTexture*)texture;
 - (void)addAnimation:(NSArray*)animationList ByName:(NSString*)animationName;
 - (void)startAnimation:(NSString*)animationName;
+- (void)startOnceAnimation:(NSString*)animationName WithEndBlock:(void(^)())block;
 - (void)startLightAnimation:(NSString*)animationName;
 - (void)setFall;
 - (void)setGround;
-- (void)update:(NSTimeInterval)dt;
+- (void)update;
+- (void)lightOn;
 
 @end

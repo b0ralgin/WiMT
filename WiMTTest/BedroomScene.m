@@ -57,10 +57,13 @@
     if (!darkSideNode.hidden) {
         return;
     }
-    
+
     [door setLightTexture:[SKTexture textureWithImageNamed:@"BedroomDoorOpen"]];
     
     [super openDoor:door];
 }
 
+//-(void)update:(NSTimeInterval)currentTime{
+//NSLog(@"%f",_girl.position.x);
+//}
 @end

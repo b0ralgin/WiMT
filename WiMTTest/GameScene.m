@@ -7,22 +7,13 @@
 //
 
 #import "GameScene.h"
-#import "Enemy.h"
-#import "Mask.h"
 
 static NSString *const leftButtonFilename = @"left_button.png";
 static NSString *const rightButtonFilename = @"right_button.png";
 static NSString *const jumpButtonFilename = @"jump_button.png";
 
 @implementation GameScene {
-    Girl* _girl;
-    
-    BOOL _isLightOn;
-    
-    float lastTime;
-    
-    int _health;
-    NSMutableArray *_heartList;
+       NSMutableArray *_heartList;
 }
 
 - (instancetype)initWithSize:(CGSize)size
@@ -48,35 +39,29 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
 }
 
 - (void)damage:(int)damage {
-    
-    for(int i = _heartList.count-1; i>=0; i--)
-    {
+    for (int i = _heartList.count-1; i>=0; i--) {
         Heart *heart = _heartList[i];
         damage = [heart damage:damage];
-        if(damage <= 0)
-        {
+        if (damage <= 0) {
             break;
         }
     }
     
-    if(damage > 0){
+    if (damage > 0) {
         //DEFEAT
     }
     
 }
 
--(void)initHealth{
-    _health = 6;
+- (void)initHealth{
     _heartList = [NSMutableArray new];
     
-    for(uint i=0; i<3; i++){
+    for(uint i = 0; i< 3; i++){
         Heart *heart = [Heart node];
         [self addChild:heart];
         [_heartList addObject:heart];
         heart.position = CGPointMake((i+1)*70, 680);
     }
-    
-    [self damage:3];
 }
 
 - (void)initGirl
@@ -105,7 +90,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     SetMask(ceiling.physicsBody, BOX_OBJECT);
     [self addChild:ceiling];
     
-    GameObject *leftWall = [GameObject spriteNodeWithImageNamed:@"wall2"];//[GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(100, self.size.height)];
+    GameObject *leftWall = [GameObject spriteNodeWithImageNamed:@"wall2"];
     leftWall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:leftWall.size];
     leftWall.physicsBody.dynamic = NO;
     leftWall.physicsBody.friction =0;
@@ -114,7 +99,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     SetMask(leftWall.physicsBody, BOX_OBJECT);
     [self addChild:leftWall];
     
-    GameObject *rightWall = [GameObject spriteNodeWithImageNamed:@"wall2"];[GameObject spriteNodeWithColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1] size:CGSizeMake(100, self.size.height)];
+    GameObject *rightWall = [GameObject spriteNodeWithImageNamed:@"wall2"];
     rightWall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rightWall.size];
     rightWall.physicsBody.dynamic = NO;
         leftWall.physicsBody.friction =0;
@@ -126,9 +111,8 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    CGRect leftRect = CGRectMake(0, 0, 512, 384);
-    CGRect rightRect = CGRectMake(512, 0, 512, 384);
-    CGRect jumpRect = CGRectMake(0, 384, 1024, 384);
+    CGRect leftRect = CGRectMake(0, 0, 512, 768);
+    CGRect rightRect = CGRectMake(512, 0, 512, 768);
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
@@ -138,53 +122,42 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         if (CGRectContainsPoint(rightRect, location)) {
             [_girl moveRight];
         }
-        if (CGRectContainsPoint(jumpRect, location)) {
-            [_girl jump];
-        }
-    }
-}
-
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
     }
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
         [_girl stopMoving];
     }
 }
 
 -(void)moveGirlTo:(CGPoint)position {
     //NSLog(@"%f", self.position.x);
-    for(Heart *heart in _heartList){
-        heart.position = CGPointMake(position.x - 400, heart.position.y);
+    for(int i = 0; i < _heartList.count; i++){
+        Heart *heart = _heartList[i];
+        heart.position = CGPointMake(position.x - 400 + 70*i, heart.position.y);
     }
     
     [background moveBackground:position.x];
 }
 
 - (void)didSimulatePhysics {
-    [self updateNodeChildrens:self WithTime:0.03];
+    [self sendNodeChildrens:self Selector:@selector(update)];
 }
 
-- (void)updateNodeChildrens:(SKNode*)node WithTime:(NSTimeInterval)dt {
+- (void)sendNodeChildrens:(SKNode*)node Selector:(SEL)selector {
     NSArray* childrenList = node.children;
     for (id child in childrenList) {
         if ([child scene] == nil) {
             continue;
         }
         
-        if ([child respondsToSelector:@selector(update:)]) {
-            [child update:dt];
+        if ([child respondsToSelector:selector]) {
+            [child performSelector:selector];
         }
         
-        [self updateNodeChildrens:child WithTime:dt];
+        [self sendNodeChildrens:child Selector:selector];
     }
 }
 
@@ -212,42 +185,144 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     if (contact.bodyA.categoryBitMask == kCategoryList[DOOR_OBJECT] && contact.bodyB.categoryBitMask == kCategoryList[GIRL_OBJECT]) {
         [self openDoor:(GameObject*)contact.bodyA.node];
     }
-    if (contact.bodyB.categoryBitMask == kCategoryList[DOOR_OBJECT] && contact.bodyA.categoryBitMask == kCategoryList[GIRL_OBJECT]) {
-        [self openDoor:(GameObject*)contact.bodyB.node];
-    }
     
-    //NSLog(@"%d",(contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask));
-    if ((contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask) == 0b00001) {
-        NSLog(@"damage");
-    }
-    
-    Enemy* node;
-    if ((contact.bodyA.contactTestBitMask & contact.bodyB.contactTestBitMask) == 0b10001) {
-        if (contact.bodyA.contactTestBitMask == 17) {
-            node = (Enemy*)contact.bodyA.node;
-        } else {
-            node = (Enemy*)contact.bodyB.node;
+    if (contact.bodyB.categoryBitMask == kCategoryList[ENEMY_OBJECT]) {
+        if ([contact.bodyB.node respondsToSelector:@selector(move)]) {
+            [(Enemy*)contact.bodyB.node move];
         }
-        //[node move];
+    }
+    
+    if (contact.bodyB.categoryBitMask == kCategoryList[GIRL_OBJECT]) {
+        if ([contact.bodyB.node.name isEqualToString:@"Girl"]) {
+            if (contact.bodyA.categoryBitMask == kCategoryList[ENEMY_OBJECT] || contact.bodyA.categoryBitMask == kCategoryList[TRAP_OBJECT]) {
+                BOOL attackFlag = YES;
+                
+                if ([contact.bodyA.node respondsToSelector:@selector(isActive)]) {
+                    attackFlag = [(Trap*)contact.bodyA.node isActive];
+                }
+                
+                if (attackFlag) {
+                    if ([contact.bodyA.node respondsToSelector:@selector(attack)]) {
+                        [(Enemy*)contact.bodyA.node attack];
+                    }
+                    
+                    [self damage:1];
+                }
+            }
+        }
     }
 }
 
 - (void)lightOn {
     darkSideNode.hidden = YES;
+    [self sendNodeChildrens:self Selector:@selector(lightOn)];
 }
 
 - (void)openDoor:(GameObject*)door {
    //Переход на сл уровень
 }
 
-- (void)addObject:(NSString*)objName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
+- (void)addObject:(NSString*)objName Light:(NSString*)lightName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
     GameObject* obj = [GameObject spriteNodeWithImageNamed:objName];
+    if (lightName != nil) {
+        [obj setLightTexture:[SKTexture textureWithImageNamed:lightName]];
+    }
     
     obj.physicsBody.dynamic = dyn;
     SetMask(obj.physicsBody, objType);
     obj.position = CGPointMake(roundf(pos.x + 0.5*obj.size.width), roundf(pos.y + 0.5*obj.size.height));
     
     [obj setParent:darkSideNode];
+}
+
+- (Enemy*)addEnemy:(NSString*)enemyName Light:(NSString*)lightName OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
+    NSMutableArray* enemyStandAnimation = [NSMutableArray new];
+    NSMutableArray* enemyWalkAnimation = [NSMutableArray new];
+    NSMutableArray* enemyAttackAnimation = [NSMutableArray new];
+    
+    for (uint i = 0; ; i++) {
+        SKTexture* standTexture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@Stand%d", enemyName, i]];
+        SKTexture* walkTexture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@Move%d", enemyName, i]];
+        SKTexture* attackTexture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@Attack%d", enemyName, i]];
+        
+        if (standTexture.size.height != 128) {
+            [enemyStandAnimation addObject:standTexture];
+        }
+        if (walkTexture.size.height != 128) {
+            [enemyWalkAnimation addObject:walkTexture];
+        }
+        if (attackTexture.size.height != 128) {
+            [enemyAttackAnimation addObject:attackTexture];
+        }
+        
+        if (standTexture.size.height == 128 && walkTexture.size.height == 128 && attackTexture.size.height == 128) {
+            break;
+        }
+    }
+    
+    Enemy* obj = [[Enemy alloc] initWithTexture:[enemyStandAnimation firstObject]];
+    if (lightName != nil) {
+        [obj setLightTexture:[SKTexture textureWithImageNamed:lightName]];
+    }
+    
+    obj.physicsBody.dynamic = dyn;
+    SetMask(obj.physicsBody, ENEMY_OBJECT);
+    obj.position = CGPointMake(roundf(pos.x + 0.5*obj.size.width), roundf(pos.y + 0.5*obj.size.height));
+    
+    [obj setParent:darkSideNode];
+    
+    [obj addAnimation:enemyStandAnimation ByName:enemyStandAnimationName];
+    [obj addAnimation:enemyWalkAnimation ByName:enemyWalkAnimationName];
+    [obj addAnimation:enemyAttackAnimation ByName:enemyAttackAnimationName];
+    
+    return obj;
+}
+
+- (Trap*)addTrap:(NSString*)trapName Light:(NSString*)lightName OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {
+    NSMutableArray* trapOnAnimation = [NSMutableArray new];
+    NSMutableArray* trapOffAnimation = [NSMutableArray new];
+    NSMutableArray* trapActiveAnimation = [NSMutableArray new];
+    NSMutableArray* trapDeactiveAnimation = [NSMutableArray new];
+    
+    [trapOffAnimation addObject:[SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@Off",trapName]]];
+    
+    for (uint i = 0; ; i++) {
+        SKTexture* onTexture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@On%d", trapName, i]];
+        SKTexture* activeTexture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@Active%d", trapName, i]];
+        SKTexture* deactiveTexture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@Deactive%d", trapName, i]];
+        
+        if (onTexture.size.height != 128) {
+            [trapOnAnimation addObject:onTexture];
+        }
+        if (activeTexture.size.height != 128) {
+            [trapActiveAnimation addObject:activeTexture];
+        }
+        if (deactiveTexture.size.height != 128) {
+            [trapDeactiveAnimation addObject:deactiveTexture];
+        }
+        
+        if (onTexture.size.height == 128 && activeTexture.size.height == 128 && deactiveTexture.size.height == 128) {
+            break;
+        }
+    }
+    
+    Trap* obj = [[Trap alloc] initWithTexture:[trapOnAnimation firstObject]];
+    if (lightName != nil) {
+        [obj setLightTexture:[SKTexture textureWithImageNamed:lightName]];
+    }
+    
+    obj.physicsBody.dynamic = dyn;
+    SetMask(obj.physicsBody, TRAP_OBJECT);
+    obj.position = CGPointMake(roundf(pos.x + 0.5*obj.size.width), roundf(pos.y + 0.5*obj.size.height));
+    
+    [obj setParent:darkSideNode];
+    
+    [obj addAnimation:trapOnAnimation ByName:trapOnAnimationName];
+    [obj addAnimation:trapOffAnimation ByName:trapOffAnimationName];
+    [obj addAnimation:trapActiveAnimation ByName:trapActiveAnimationName];
+    [obj addAnimation:trapDeactiveAnimation ByName:trapDeactiveAnimationName];
+    
+    return obj;
 }
 
 - (void)addAnimateObject:(NSArray*)objNameList WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {

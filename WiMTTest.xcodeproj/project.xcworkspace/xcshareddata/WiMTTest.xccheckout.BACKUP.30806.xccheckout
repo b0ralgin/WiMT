@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+<<<<<<< HEAD
+	<string>6A6E7778-E05C-43A2-A889-07BF5E2B04B2</string>
+=======
+	<string>79BEAE0F-11A2-43AB-A469-730FD29DB96B</string>
+>>>>>>> 191088773c7b3fdde53f6e4b8b274a8dfedb7410
+	<key>IDESourceControlProjectName</key>
+	<string>WiMTTest</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>991AE2F3-B467-4939-8283-C73153086B49</key>
+		<string>https://github.com/b0ralgin/WiMT/trunk</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WiMTTest.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>991AE2F3-B467-4939-8283-C73153086B49</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>991AE2F3-B467-4939-8283-C73153086B49</key>
+		<string>https://github.com/b0ralgin/WiMT</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/b0ralgin/WiMT/trunk/WiMTTest.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>991AE2F3-B467-4939-8283-C73153086B49</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
+			<string>branches</string>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>trunk</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>991AE2F3-B467-4939-8283-C73153086B49</string>
+			<key>IDESourceControlWCCName</key>
+			<string>WiMT</string>
+		</dict>
+	</array>
+</dict>
+</plist>

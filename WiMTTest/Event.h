@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SpriteKit/SpriteKit.h>
 typedef enum{NotShown = 0, Showing, Shown} EventState;
 @interface Event : NSObject
 @property (strong, nonatomic) NSString *text;
 @property (assign, nonatomic) float location;
 @property (assign, nonatomic) EventState state;
+@property (strong, nonatomic) SKLabelNode *label;
 @end

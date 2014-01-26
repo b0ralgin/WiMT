@@ -10,40 +10,50 @@
 static NSString *const emptyHeartFilename = @"emptyHeart.png";
 static NSString *const halfHeartFilename = @"halfHeart.png";
 static NSString *const fullHearttFilename = @"fullHeart.png";
+
 static const int START_HP = 2;
+
 @implementation Heart{
     int hp;
+    SKTexture* heart[3];
 }
+
 -(instancetype)init{
-    if(( self = [super initWithImageNamed:fullHearttFilename]))
+    if (( self = [super initWithImageNamed:fullHearttFilename]))
     {
         hp = START_HP;
+        heart[0] = [SKTexture textureWithImageNamed:emptyHeartFilename];
+        heart[1] = [SKTexture textureWithImageNamed:halfHeartFilename];
+        heart[2] = [SKTexture textureWithImageNamed:fullHearttFilename];
     }
     return self;
 }
--(int)damage:(int)damage{
-    if(hp<1)
-    {
-        return damage;
-    }
-    else{
-        int restDamage = damage - hp;
-        hp-=damage;
-        [self showAnimation];
-        return restDamage;
+
+- (int)damage:(int)damage {
+    int rest = damage - hp;
+    
+    hp -= damage;
+    if (hp < 0) {
+        hp = 0;
     }
     
+    [self showAnimation];
+    return rest;
 }
--(void)showAnimation{
-    if(hp == 1)
-    {
-        SKTexture *halfHeartTexture = [SKTexture textureWithImageNamed:halfHeartFilename];
-        self.texture = halfHeartTexture;
+
+- (int)restore:(int)health {
+    int rest = health - START_HP + hp;
+    
+    hp += health;
+    if (hp > START_HP) {
+        hp = START_HP;
     }
-    else if(hp < 1)
-    {
-        SKTexture *fullHeartTexture = [SKTexture textureWithImageNamed:emptyHeartFilename];
-        self.texture = fullHeartTexture;
-    }
+    
+    [self showAnimation];
+    return rest;
+}
+
+-(void)showAnimation {
+    self.texture = heart[hp];
 }
 @end
