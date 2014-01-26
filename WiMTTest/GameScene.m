@@ -29,6 +29,9 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         darkSideNode.zPosition = 100;
         [self addChild:darkSideNode];
         
+        SKSpriteNode* vignette = [SKSpriteNode spriteNodeWithImageNamed:@"vignette"];
+        [darkSideNode addChild:vignette];
+        
         [self loadLevel];
         [self initGirl];
         [self initHealth];

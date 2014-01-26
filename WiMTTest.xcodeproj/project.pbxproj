@@ -16,6 +16,7 @@
 		A7C634AE1894941F00E09FD7 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C634AD1894941F00E09FD7 /* Event.m */; };
 		EA18F5E71894E55300E91389 /* SpikeAsserts.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA18F5E61894E55300E91389 /* SpikeAsserts.xcassets */; };
 		EA18F5E91894E6A300E91389 /* WaverAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA18F5E81894E6A300E91389 /* WaverAssets.xcassets */; };
+		EA18F5EE1894F14900E91389 /* vignette@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA18F5ED1894F14900E91389 /* vignette@2x.png */; };
 		EA7D57981894857900546170 /* LivingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7D57971894857900546170 /* LivingScene.m */; };
 		EA7D57B41894E39000546170 /* FlowerAsserts.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA7D57B31894E39000546170 /* FlowerAsserts.xcassets */; };
 		EAA9EE5518942C2200D198A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9EE5418942C2200D198A5 /* Foundation.framework */; };
@@ -79,6 +80,7 @@
 		A7C634AD1894941F00E09FD7 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		EA18F5E61894E55300E91389 /* SpikeAsserts.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SpikeAsserts.xcassets; sourceTree = "<group>"; };
 		EA18F5E81894E6A300E91389 /* WaverAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WaverAssets.xcassets; sourceTree = "<group>"; };
+		EA18F5ED1894F14900E91389 /* vignette@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vignette@2x.png"; sourceTree = "<group>"; };
 		EA7D57961894857900546170 /* LivingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingScene.h; sourceTree = "<group>"; };
 		EA7D57971894857900546170 /* LivingScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingScene.m; sourceTree = "<group>"; };
 		EA7D57B31894E39000546170 /* FlowerAsserts.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FlowerAsserts.xcassets; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				EAA9EF1318945B3500D198A5 /* Enemy.m */,
 				A746EE691894B46C00EAEE8C /* Trap.h */,
 				A746EE6A1894B46C00EAEE8C /* Trap.m */,
+				EA18F5ED1894F14900E91389 /* vignette@2x.png */,
 				EAA9EF1418945B3500D198A5 /* enemyImages */,
 				EAA9EF1618945B3500D198A5 /* forest patter.png */,
 				EAA9EF1718945B3500D198A5 /* Game-Info.plist */,
@@ -361,6 +364,7 @@
 				A7159CC61894DFC900590183 /* TVAssets.xcassets in Resources */,
 				EA18F5E71894E55300E91389 /* SpikeAsserts.xcassets in Resources */,
 				EAA9EF5018945B3600D198A5 /* Game-Info.plist in Resources */,
+				EA18F5EE1894F14900E91389 /* vignette@2x.png in Resources */,
 				EAA9EF5F18945B3600D198A5 /* ObjectAssets.xcassets in Resources */,
 				EAA9EF4718945B3500D198A5 /* Main_iPhone.storyboard in Resources */,
 				EAA9EF5A18945B3600D198A5 /* jump_button.png in Resources */,
