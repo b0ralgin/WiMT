@@ -12,6 +12,8 @@
 #import "LivingScene.h"
 #import "SceneDirector.h"
 #import "MenuScene.h"
+#import "ImageScene.h"
+
 @interface ViewController : UIViewController
 -(void)runLevel:(int)levelNumber;
 @end

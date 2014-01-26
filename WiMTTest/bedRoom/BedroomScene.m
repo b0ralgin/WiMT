@@ -25,7 +25,7 @@
 - (void)initGirl {
     [super initGirl];
     
-    /*[_girl turnOff];
+    [_girl turnOff];
     
     SKSpriteNode* mindBuble = [SKSpriteNode spriteNodeWithImageNamed:@"MindBuble"];
     SKSpriteNode* story1 = [SKSpriteNode spriteNodeWithImageNamed:@"Story1"];
@@ -57,13 +57,13 @@
     SKAction* wait0 = [SKAction waitForDuration:1.0];
     SKAction* wait1 = [SKAction waitForDuration:4.0];
     SKAction* wait2 = [SKAction waitForDuration:8.0];
+    SKAction* sound = [SKAction playSoundFileNamed:@"laught-small.mp3" waitForCompletion:YES];
+    SKAction* block = [SKAction runBlock:^() {[_girl turnOn];}];
     
-    [mindBuble runAction:[SKAction sequence:@[showSprite, wait0, hideSprite, showSprite, wait0, hideSprite, showSprite, wait0, hideSprite]]];
+    [mindBuble runAction:[SKAction sequence:@[showSprite, wait0, hideSprite, showSprite, wait0, hideSprite, showSprite, wait0, hideSprite, sound, block]]];
     [story1 runAction:[SKAction sequence:@[showSprite, wait0, hideSprite]]];
     [story2 runAction:[SKAction sequence:@[wait1, showSprite, wait0, hideSprite]]];
     [story3 runAction:[SKAction sequence:@[wait2, showSprite, wait0, hideSprite]]];
-    
-    [_girl performSelector:@selector(turnOn) withObject:Nil afterDelay:7.5];*/
 }
 
 - (void)initBackground{

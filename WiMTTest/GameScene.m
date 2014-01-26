@@ -14,6 +14,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
 
 @implementation GameScene {
     NSMutableArray *_heartList;
+    SKSpriteNode* vignette;
     GameObject* puf;
     float offset;
 }
@@ -29,7 +30,10 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         darkSideNode.zPosition = 100;
         [self addChild:darkSideNode];
         
-        SKSpriteNode* vignette = [SKSpriteNode spriteNodeWithImageNamed:@"vignette"];
+        vignette = [SKSpriteNode spriteNodeWithImageNamed:@"vignette"];
+        vignette.xScale = 1.1;
+        vignette.blendMode = SKBlendModeAlpha;
+        vignette.zPosition = 1001;
         [darkSideNode addChild:vignette];
         
         [self loadLevel];
@@ -47,7 +51,10 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
         puf.hidden = YES;
         [self addChild:puf];
         puf.zPosition = 2000;
+        
+        [self didSimulatePhysics];
     }
+    
     return self;
 }
 
@@ -73,7 +80,17 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
     }
     
     if (damage > 0) {
-        //DEFEAT
+        [[SceneDirector shared] restartLevel];
+    }
+}
+
+- (void)heal:(int)hp {
+    for (int i = 0 ; i < _heartList.count; i++) {
+        Heart *heart = _heartList[i];
+        hp = [heart restore:hp];
+        if (hp <= 0) {
+            break;
+        }
     }
 }
 
@@ -161,7 +178,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
 
 -(void)moveGirlTo:(CGPoint)position {
     offset = position.x;
-    
+    vignette.position = CGPointMake(position.x, 384);
     //NSLog(@"%f", self.position.x);
     for(int i = 0; i < _heartList.count; i++){
         Heart *heart = _heartList[i];
@@ -228,7 +245,7 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
             [(Enemy*)contact.bodyA.node damage:1];
         }
     }
-    NSLog(@"Coll %d %d",contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask);
+    
     if (contact.bodyA.categoryBitMask == kCategoryList[CHAINSAW_OBJECT] && _girl.isAttack) {
         if ([contact.bodyB.node respondsToSelector:@selector(damage:)]) {
             [(Enemy*)contact.bodyB.node damage:1];
@@ -251,6 +268,11 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
                     [self damage:1];
                 }
             }
+            
+            if (contact.bodyA.categoryBitMask == kCategoryList[CANDY_OBJECT]) {
+                [self heal:1];
+                [contact.bodyA.node removeFromParent];
+            }
         }
     }
 }
@@ -261,7 +283,17 @@ static NSString *const jumpButtonFilename = @"jump_button.png";
 }
 
 - (void)openDoor:(GameObject*)door {
-    [[SceneDirector shared] runNextLevel];
+    if ([door.name isEqualToString:@"Teddy"]) {
+        [_girl turnOff];
+        
+        SKAction* sound = [SKAction playSoundFileNamed:@"laught-big.mp3" waitForCompletion:YES];
+        SKAction* block = [SKAction runBlock:^() {[_girl turnOn]; [[SceneDirector shared] runNextLevel];}];
+        
+        [self runAction:[SKAction sequence:@[sound, block]]];
+    }
+    else {
+        [[SceneDirector shared] runNextLevel];
+    }
 }
 
 - (GameObject*)addObject:(NSString*)objName Light:(NSString*)lightName WithObjectType:(GameObjectType)objType OnPos:(CGPoint)pos Dynamic:(BOOL)dyn {

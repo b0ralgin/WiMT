@@ -7,7 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "SceneDirector.h"
 
 @interface ImageScene : SKScene
+
+- (instancetype)initWithImage:(NSString*)imageName;
 
 @end

@@ -34,13 +34,16 @@ static SceneDirector *instance = nil;
     _viewController = viewController;
 }
 
--(void)runNextLevel{
-    int firstLevelNumber = 0;
-    int lastLevelNumber = 4;
-    
+-(void)runNextLevel {
     currentLevel++;
-    if(currentLevel>=firstLevelNumber && currentLevel<lastLevelNumber){
-        [_viewController runLevel:currentLevel];
+    if (currentLevel > 3) {
+        currentLevel = 0;
     }
+    
+    [_viewController runLevel:currentLevel];
+}
+
+- (void)restartLevel {
+    [_viewController runLevel:currentLevel];
 }
 @end

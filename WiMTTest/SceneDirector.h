@@ -13,4 +13,5 @@
 +(SceneDirector *) shared;
 -(void)setViewController: (ViewController *) viewController;
 -(void)runNextLevel;
+- (void)restartLevel;
 @end

@@ -17,6 +17,7 @@
     self = [super initWithTexture:texture];
     
     if (self != nil) {
+        
         self.moveSpeed = 2;
         self.health = 1;
         
@@ -40,8 +41,6 @@
 }
 
 - (void)damage:(int)hit {
-    NSLog(@"%@ damage %d" , self, hit);
-    
     if (self.health <= 0) {
         return;
     }
@@ -78,11 +77,13 @@
 
 - (void)continueMove {
     [self startAnimation:enemyWalkAnimationName];
+    
     [self runAction:[SKAction repeatActionForever:[SKAction moveByX:self.xScale*self.moveSpeed y:0 duration:0.1]]];
 }
 
 - (void)lightOn {
     [self removeAllActions];
+    self.texture = lightCopy.texture;
     SetMask(self.physicsBody, ROOM_OBJECT);
     self.physicsBody.dynamic = NO;
 }
